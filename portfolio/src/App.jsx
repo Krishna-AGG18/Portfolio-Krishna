@@ -8,9 +8,8 @@ function App() {
     <>
       <Header />
       <div className="relative">
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-200 to-blue-200">
-          <h2 className="text-4xl font-bold">The First slide</h2>
-          <p className="mt-2">Scroll Down for next slide</p>
+        <div className="sticky top-0 h-screen flex flex-row items-center justify-center bg-black">
+          
           <Home />
         </div>
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-gradient-to-b from-indigo-800 to-purple-800 text-white">
