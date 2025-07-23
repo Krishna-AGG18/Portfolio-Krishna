@@ -5,8 +5,8 @@ function Header() {
 
     return (
         <>
-            <div className='p-2 bg-black flex justify-between items-center'>
-                <div className='bg-black p-2 font-extrabold text-4xl'>
+            <div className='p-2 overflow-hidden bg-black flex justify-between items-center w-full max-sm:flex-col'>
+                <div className='bg-black p-2 font-extrabold text-[clamp(1rem, 3vw, 5rem)]'>
                     <TextType
                         text={["< KRISHNA", ""]}
                         typingSpeed={75}
@@ -18,13 +18,12 @@ function Header() {
                 <div>
                     <ul className='p-2 list-none text-white flex gap-[20px] justify-center items-center'>
                         {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item, index) => (
-                            <li
-                                key={index}
-                                className='relative group p-1 cursor-pointer'
-                            >
-                                <span className='duration-200 text-center font-semibold'>{item}</span>
-                                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
-                            </li>
+                            <a href={`#${item}`} key={index}>
+                                <li className="relative group p-1 cursor-pointer text-[clamp(12px,1rem,5rem)] list-none">
+                                    <span className="duration-200 text-center font-semibold">{item}</span>
+                                    <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></span>
+                                </li>
+                            </a>
                         ))}
                     </ul>
                 </div>

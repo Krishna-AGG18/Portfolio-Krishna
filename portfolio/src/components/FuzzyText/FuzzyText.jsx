@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 const FuzzyText = ({
   children,
-  fontSize = "clamp(1rem, 4vw, 5rem)",
+  fontSize = "clamp(12px, 1rem, 5rem)",
   fontWeight = 900,
   fontFamily = "inherit",
   color = "#fff",
@@ -77,7 +77,7 @@ const FuzzyText = ({
       offCtx.fillStyle = color;
       offCtx.fillText(text, xOffset - actualLeft, actualAscent);
 
-      const horizontalMargin = 50;
+      const horizontalMargin = 0;
       const verticalMargin = 0;
       canvas.width = offscreenWidth + horizontalMargin * 2;
       canvas.height = tightHeight + verticalMargin * 2;
