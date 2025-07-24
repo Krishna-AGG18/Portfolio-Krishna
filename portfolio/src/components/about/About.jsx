@@ -17,7 +17,7 @@ function About() {
                 className="w-[100dvw]"
             />
 
-            <div className="absolute inset-0 overflow-y-auto custom-scrollbar px-4 py-10">
+            <div className="absolute inset-0 md:overflow-y-auto md:custom-scrollbar px-4 py-10">
                 <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-10 text-white">
                     {/* About Text */}
                     <div className='space-y-6'>
