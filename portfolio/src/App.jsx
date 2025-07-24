@@ -9,16 +9,16 @@ function App() {
     <>
       <Header />
       <div className="relative">
-        <div className="sticky top-0 h-screen flex flex-row items-center overflow-hidden bg-black" id='Home'>
+        <div className="md:sticky md:top-0 md:h-screen flex flex-row items-center overflow-hidden bg-black" id='Home'>
           <Home />
         </div>
-        <div className="sticky top-0 h-screen flex flex-col items-center bg-black text-white" id='About'>
+        <div className="md:sticky md:top-0 md:h-screen flex flex-col items-center bg-black text-white" id='About'>
           <About />
         </div>
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-800 to-pink-800 text-white" id='Projects'>
+        <div className="md:sticky md:top-0 md:h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-800 to-pink-800 text-white" id='Projects'>
           <Project />
         </div>
-        <div className="sticky top-0 h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-indigo-100 text-black" id='Skills'>
+        <div className="md:sticky md:top-0 md:h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-200 to-indigo-100 text-black" id='Skills'>
           <h2 className="text-4xl font-bold">The Fourth slide</h2>
         </div>
       </div>
