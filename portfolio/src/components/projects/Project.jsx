@@ -118,7 +118,7 @@ function Project() {
                     rotation={30}
                 />
 
-                <div className="absolute inset-0 md:overflow-y-auto md:custom-scrollbar px-4 py-10">
+                <div className="absolute inset-0 overflow-y-auto custom-scrollbar px-4 py-10">
                     <h2 className="text-[clamp(20px,5vw,40px)] text-gray-100 font-bold border-b border-gray-700 pb-2 tracking-wide inline-block">
                         🛠️ <span className="text-white">Things I’ve Built</span>
                     </h2>
