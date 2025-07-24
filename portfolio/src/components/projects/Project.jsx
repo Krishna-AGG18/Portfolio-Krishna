@@ -4,18 +4,102 @@ import SpotlightCard from '../SpotlightCard/SpotlightCard'
 function Project() {
     const projects = [
         {
-            title: 'Blog App',
-            description: 'A full-featured blog app with user auth, rich text editing, and responsive UI.',
-            stack: ['React', 'Firebase', 'Tailwind'],
-            live: 'https://blogg-app.vercel.app',
-            github: 'https://github.com/yourname/blogg-app',
+            title: 'ThoughtHaven',
+            description: 'A full-featured blog app with user auth, basic CRUD operations, rich text editing, and responsive UI.',
+            stack: ['React', 'Appwrite', 'Tailwind'],
+            live: 'https://thoughthaven.netlify.app',
+            github: 'https://github.com/Krishna-AGG18/ThoughtHaven',
         },
         {
             title: 'Portfolio',
-            description: 'My personal portfolio showcasing projects and skills with animation and effects.',
-            stack: ['React', 'Tailwind CSS', 'Framer Motion'],
-            live: 'https://krishna-portfolio.vercel.app',
-            github: 'https://github.com/yourname/portfolio',
+            description: 'A dynamic text-to-speech web app featuring custom voice selection, real-time speech synthesis, and a sleek, responsive UI.',
+            stack: ['React', 'Web Speech API', 'Tailwind'],
+            live: 'https://echosait.netlify.app',
+            github: 'https://github.com/Krishna-AGG18/jsSpeechTest',
+        },
+        {
+            title: 'React Dice Duel',
+            description: 'A fun dice game built with React to practice state and conditional rendering.',
+            stack: ['React', 'Tailwind'],
+            live: 'https://revdicegame.netlify.app', // Replace with your actual deployed link
+            github: 'https://github.com/Krishna-AGG18/React-learning/tree/main/DiceGame', // Replace with actual repo link
+        },
+        {
+            title: 'Personal Portfolio',
+            description: 'A modern portfolio website built for my brother, featuring responsive design and contact form integration with direct email submission.',
+            stack: ['React', 'Tailwind', 'EmailJS'],
+            live: 'https://karanaggarwal.netlify.app', // Replace with actual link
+            github: 'https://github.com/Krishna-AGG18/React-learning/tree/main/portfolioCA', // Replace with actual repo
+        },
+        {
+            title: 'Redux To-Do App',
+            description: 'A simple to-do app built with Redux Toolkit to practice create, update, complete, and delete operations.',
+            stack: ['React', 'Redux Toolkit', 'Tailwind'],
+            live: 'https://react-redux-todoapp-krishna.netlify.app/', // Replace with actual deployed link
+            github: 'https://github.com/Krishna-AGG18/React-learning/tree/main/reduxToolkitTodo', // Replace with actual repo link
+        },
+        {
+            title: 'CurrencyXchange',
+            description: 'A currency converter app built with React and custom hooks, featuring real-time rates and currency swap functionality.',
+            stack: ['React', 'Custom Hooks', 'Tailwind'],
+            live: 'https://currency-exchnge-react.netlify.app', // Replace with actual live link
+            github: 'https://https://github.com/Krishna-AGG18/React-learning/tree/main/06-currencyExchange', // Replace with actual repo
+        },
+        {
+            title: 'Classic Snake Game',
+            description: 'A fully responsive snake game built with JavaScript and CSS, playable across devices.',
+            stack: ['JavaScript', 'HTML', 'CSS'],
+            live: 'https://snakegame-sait.netlify.app', // Replace with actual live link
+            github: 'https://github.com/Krishna-AGG18/Snake-Game', // Replace with actual repo
+        },
+        {
+            title: 'Hangman Challenge',
+            description: 'A classic Hangman game with clue-based guessing, progressive drawing, and a 6-attempt limit.',
+            stack: ['JavaScript', 'HTML', 'CSS'],
+            live: 'https://hangman-sait.netlify.app', // Replace with actual deployed link
+            github: 'https://github.com/Krishna-AGG18/Hangman_game', // Replace with actual repo
+        },
+        {
+            title: 'Rock Paper Scissors',
+            description: 'A responsive Rock Paper Scissors game built in JavaScript, showing real-time computer choices and game outcomes.',
+            stack: ['JavaScript', 'HTML', 'CSS'],
+            live: 'https://rockpaperscissor-sait.netlify.app', // Replace with actual deployed link
+            github: 'https://github.com/Krishna-AGG18/rock-paper-scissors', // Replace with actual repo
+        },
+        {
+            title: 'Tic Tac Toe',
+            description: 'A classic Tic Tac Toe game built in JavaScript with responsive UI and turn-based logic for two players.',
+            stack: ['JavaScript', 'HTML', 'CSS'],
+            live: 'https://tictactoe-sait.netlify.app', // Replace with your actual live link
+            github: 'https://github.com/Krishna-AGG18/Tic-tac-toe', // Replace with actual repo
+        },
+        {
+            title: 'ScribeSpace',
+            description: 'A simple note-taking app to create, edit, and delete notes with a clean, responsive UI.',
+            stack: ['React', 'Bootstrap', 'Tailwind'],
+            live: 'https://scribespace.netlify.app', // Replace with actual live link
+            github: 'https://github.com/Krishna-AGG18/ScribeSpace-notes', // Replace with actual repo
+        },
+        {
+            title: 'Spendence',
+            description: 'An expense tracking app built with vanilla JavaScript and Bootstrap to record, view, and manage daily spending.',
+            stack: ['JavaScript', 'Bootstrap', 'HTML', 'CSS'],
+            live: 'https://spendence.netlify.app', // Replace with your actual live link
+            github: 'https://github.com/Krishna-AGG18/Spendence', // Replace with your actual repo
+        },
+        {
+            title: "Today's Triumph",
+            description: 'A clean and responsive to-do app built with pure JavaScript and Bootstrap to add, complete, and remove tasks.',
+            stack: ['JavaScript', 'Bootstrap', 'HTML', 'CSS'],
+            live: 'https://todaystriumph.netlify.app', // Replace with your actual live link
+            github: 'https://github.com/Krishna-AGG18/todolistweb', // Replace with actual repo
+        },
+        {
+            title: 'Weave The Web',
+            description: 'A responsive e-commerce frontend website built with modern UI components to showcase products, categories, and cart layout — without backend integration.',
+            stack: ['HTML', 'CSS', 'JavaScript', 'Bootstrap'],
+            live: 'https://weavetheweb.netlify.app', // Replace with your actual live link
+            github: 'https://github.com/Krishna-AGG18/Weave-The-Web', // Replace with actual repo
         },
         // Add more projects similarly
     ];

@@ -6,7 +6,7 @@ import Particles from '../Particles/Particles'
 function Home() {
     return (
         <>
-            <div style={{ width: '100dvw', height: '600px', position: 'relative' }}>
+            <div style={{ width: '100dvw',height:'600px' , position: 'relative' }}>
                 <Particles
                     particleColors={['#ffffff', '#ffffff']}
                     particleCount={200}
@@ -18,7 +18,7 @@ function Home() {
                     disableRotation={false}
                 />
             </div>
-            <div className='flex absolute top-0 justify-center max-md:justify-evenly max-md:flex-col-reverse items-center h-[100dvh] gap-[32px] w-[100dvw] '>
+            <div className='flex z-10 absolute inset-0 overflow-y-auto custom-scrollbar px-4 py-10 justify-center max-md:justify-evenly max-md:flex-col-reverse items-center h-[100dvh] gap-[32px] w-[100dvw] '>
                 <div className='flex flex-col px-2 '>
                     {/* <h2 className=" font-bold"> */}
                     <FuzzyText
