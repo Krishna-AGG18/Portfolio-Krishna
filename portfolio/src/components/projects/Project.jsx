@@ -1,8 +1,9 @@
-import React from 'react'
-import Beams from '../Beams/Beams'
-import SpotlightCard from '../SpotlightCard/SpotlightCard'
+import React from 'react';
+import Beams from '../Beams/Beams';
+import SpotlightCard from '../SpotlightCard/SpotlightCard';
+
 function Project() {
-    const projects = [
+  const projects = [
         {
             title: 'ThoughtHaven',
             description: 'A full-featured blog app with user auth, basic CRUD operations, rich text editing, and responsive UI.',
@@ -104,75 +105,75 @@ function Project() {
         // Add more projects similarly
     ];
 
-    return (
-        <div className='w-full h-full '>
-            <div className='w-full h-full relative'>
-                <Beams
-                    beamWidth={3}
-                    beamHeight={30}
-                    beamNumber={12}
-                    lightColor="#ffffff"
-                    speed={2}
-                    noiseIntensity={1.75}
-                    scale={0.2}
-                    rotation={30}
-                />
+  return (
+    <div className="relative w-full min-h-screen px-4 py-20 bg-black text-white">
+      {/* Background Beams */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Beams
+          beamWidth={3}
+          beamHeight={30}
+          beamNumber={12}
+          lightColor="#ffffff"
+          speed={2}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={30}
+        />
+      </div>
 
-                <div className="absolute inset-0 overflow-y-auto customs-scrollbar px-4 py-10">
-                    <h2 className="text-[clamp(20px,5vw,40px)] text-gray-100 font-bold border-b border-gray-700 pb-2 tracking-wide inline-block">
-                        🛠️ <span className="text-white">Things I’ve Built</span>
-                    </h2>
-                    <div className="grid grid-cols-1 xs:grid-cols-2 gap-4 my-6 md:grid-cols-3 lg:grid-cols-4">
-                        {projects.map((project, index) => (
-                            <SpotlightCard
-                                key={index}
-                                className="custom-spotlight-card cursor-pointer p-4 bg-black border border-gray-800 rounded-xl text-white hover:shadow-lg transition-all duration-300"
-                                spotlightColor="rgba(255, 255, 255, 0.2)"
-                            >
-                                <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-                                <p className="text-sm text-gray-400 mb-3">{project.description}</p>
+      {/* Foreground Content */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 border-b border-gray-700 pb-2 inline-block">
+          🛠️ Projects I've Built
+        </h2>
 
-                                <div className="flex flex-wrap gap-1 text-xs text-gray-300 mb-3">
-                                    {project.stack.map((tech, idx) => (
-                                        <span
-                                            key={idx}
-                                            className="bg-gray-800 px-2 py-0.5 rounded-full"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <div className="flex gap-2">
-                                    {project.live && (
-                                        <a
-                                            href={project.live}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-xs bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded text-white"
-                                        >
-                                            Live
-                                        </a>
-                                    )}
-                                    {project.github && (
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-xs border border-indigo-500 px-3 py-1 rounded text-indigo-400 hover:bg-indigo-600 hover:text-white"
-                                        >
-                                            GitHub
-                                        </a>
-                                    )}
-                                </div>
-                            </SpotlightCard>
-                        ))}
-                    </div>
-
+        {/* Scrollable vertical grid only for md and up */}
+        <div className="h-auto md:h-[70vh] overflow-y-auto pr-2 customs-scrollbar">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 pb-6">
+            {projects.map((project, index) => (
+              <SpotlightCard
+                key={index}
+                className="bg-zinc-900 border border-gray-800 p-4 rounded-xl text-white hover:shadow-lg transition-all duration-300"
+                spotlightColor="rgba(255, 255, 255, 0.1)"
+              >
+                <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+                <p className="text-sm text-gray-400 mb-3">{project.description}</p>
+                <div className="flex flex-wrap gap-1 text-xs text-gray-300 mb-3">
+                  {project.stack.map((tech, idx) => (
+                    <span key={idx} className="bg-gray-800 px-2 py-0.5 rounded-full">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-            </div>
+                <div className="flex gap-2">
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs bg-indigo-600 hover:bg-indigo-700 px-3 py-1 rounded"
+                    >
+                      Live
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs border border-indigo-500 px-3 py-1 rounded text-indigo-400 hover:bg-indigo-600 hover:text-white"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </SpotlightCard>
+            ))}
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
-export default Project
+export default Project;

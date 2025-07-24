@@ -15,10 +15,10 @@ function Home() {
                     particleBaseSize={100}
                     moveParticlesOnHover={true}
                     alphaParticles={false}
-                    disableRotation={false}
+                    disableRotation={true}
                 />
             </div>
-            <div className='flex z-10 absolute inset-0 overflow-y-auto px-4 py-10 justify-center max-md:justify-evenly max-md:flex-col-reverse items-center h-[100dvh] gap-[32px] w-[100dvw] '>
+            <div className='flex z-10 absolute inset-0 overflow-y-auto  px-4 py-10 justify-center max-md:justify-evenly max-md:flex-col-reverse items-center h-[100dvh] gap-[32px] w-[100dvw] '>
                 <div className='flex flex-col px-2 '>
                     {/* <h2 className=" font-bold"> */}
                     <FuzzyText
@@ -38,8 +38,6 @@ function Home() {
                         I craft responsive, user-friendly web interfaces with React and modern frontend tools.
 
                         Currently leveling up my skills in backend development with Java and diving into the worlds of Artificial Intelligence and Web3.
-
-                        Let’s build something amazing together.
                     </ShinyText>
                     <ShinyText speed={4} className="mt-1 max-w-md text-sm md:text-base px-4 py-2">
                         Let’s build something amazing together.
