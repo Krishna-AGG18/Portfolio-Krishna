@@ -18,7 +18,7 @@ function Home() {
                     disableRotation={false}
                 />
             </div>
-            <div className='flex z-10 absolute inset-0 md:overflow-y-auto px-4 py-10 justify-center max-md:justify-evenly max-md:flex-col-reverse items-center h-[100dvh] gap-[32px] w-[100dvw] '>
+            <div className='flex z-10 absolute inset-0 overflow-y-auto px-4 py-10 justify-center max-md:justify-evenly max-md:flex-col-reverse items-center h-[100dvh] gap-[32px] w-[100dvw] '>
                 <div className='flex flex-col px-2 '>
                     {/* <h2 className=" font-bold"> */}
                     <FuzzyText

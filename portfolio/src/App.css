@@ -30,3 +30,20 @@ body{
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #000000; /* slightly lighter on hover */
 }
+
+.customs-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.customs-scrollbar::-webkit-scrollbar-track {
+  background: #000000; /* black track */
+}
+
+.customs-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #434343; /* black thumb */
+  border-radius: 10px;
+}
+
+.customs-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #000000; /* slightly lighter on hover */
+}
