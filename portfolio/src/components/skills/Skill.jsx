@@ -1,6 +1,5 @@
 import React from 'react'
 import Galaxy from '../Galaxy/Galaxy'
-import TiltedCard from '../TiltedCard/TiltedCard'
 function Skill() {
     return (
         <div className="relative w-full min-h-screen px-4 py-16 overflow-hidden bg-black text-white">
@@ -20,25 +19,8 @@ function Skill() {
                     🧠 Technologies I Work With
                 </h2>
                 <div className='flex flex-wrap p-4 '>
-                    <TiltedCard
-                        imageSrc="https://i.pinimg.com/736x/94/5d/83/945d8320b2991e7345ea0dda5ee1b6bb.jpg"
-                        altText="HTML icon"
-                        captionText="HTML 5"
-                        containerHeight="175px"
-                        containerWidth="175px"
-                        imageHeight="175px"
-                        imageWidth="175x"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.2}
-                        showMobileWarning={false}
-                        showTooltip={true}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className="tilted-card-demo-text text-[10px]1">
-                                HTML 5
-                            </p>
-                        }
-                    />
+                   
+                    
                 </div>
             </div>
         </div>
