@@ -41,7 +41,7 @@ function Skill() {
                 <h2 className="text-xl md:text-4xl font-bold text-center mb-12 border-b border-white pb-2 inline-block">
                     🧠 Technologies I Work With
                 </h2>
-               <div className="h-auto md:h-[70vh] overflow-y-auto pr-2 customs-scrollbar">
+               <div className="h-auto md:h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
                 <div className="grid grid-cols-2 overflow-y-auto md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 place-items-center">
                     {skills.map((skill, index) => (
                         <SpotlightCard
