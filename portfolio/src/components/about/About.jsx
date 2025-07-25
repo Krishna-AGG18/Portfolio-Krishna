@@ -27,19 +27,19 @@ function About() {
           <h2 className="text-2xl md:text-3xl font-bold border-b border-gray-700 pb-2 max-md:text-center">
             ✨ About Me
           </h2>
-          <p className="text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
+          <p className="max-md:aos text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
             👋 Hey! I’m <span className="text-indigo-400">Krishna</span>
           </p>
-          <p className="text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
+          <p className="max-md:aos text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
             A passionate <span className="text-white font-medium">frontend developer</span> with a strong foundation in building modern, responsive, and user-centric web applications using <span className="text-white font-medium">React</span> and other cutting-edge technologies.
           </p>
-          <p className="text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
+          <p className="max-md:aos text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
             I specialize in creating sleek, accessible, and intuitive interfaces that focus on performance and design. Currently learning <span className="text-white font-medium">backend development using Java</span> and exploring <span className="text-white font-medium">AI</span> and <span className="text-white font-medium">Web3</span>.
           </p>
-          <p className="text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
+          <p className="max-md:aos text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
             My journey into tech has been self-driven, fueled by curiosity and the joy of turning ideas into digital products. I love solving real-world problems through code.
           </p>
-          <p className="text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
+          <p className="max-md:aos text-[clamp(12px,1.1vw,18px)] text-gray-400 leading-relaxed">
             Outside of code, you’ll find me exploring tech trends, building side projects, and contributing to open-source communities.
           </p>
           <div className="mt-6">
@@ -61,31 +61,31 @@ function About() {
           </h2>
 
           <div>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-200">
+            <h3 className="max-md:aos text-lg md:text-xl font-semibold text-gray-200">
               Bachelor of Computer Applications (BCA - Hons.)
             </h3>
-            <p className="text-sm text-gray-400">
+            <p className="max-md:aos text-sm text-gray-400">
               Maharaja Surajmal Institute, GGSIP University, Delhi
             </p>
-            <p className="text-sm text-gray-500 italic">
+            <p className="max-md:aos text-sm text-gray-500 italic">
               Currently in 2nd Year (2024 – 2028)
             </p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-200">Senior Secondary (Class 12th)</h3>
-            <p className="text-sm text-gray-400">Kendriya Vidyalaya No.1, Delhi Cantt - 10</p>
-            <p className="text-sm text-gray-500 italic">Science Stream (PCM)</p>
+            <h3 className="max-md:aos text-lg font-semibold text-gray-200">Senior Secondary (Class 12th)</h3>
+            <p className="max-md:aos text-sm text-gray-400">Kendriya Vidyalaya No.1, Delhi Cantt - 10</p>
+            <p className="max-md:aos text-sm text-gray-500 italic">Science Stream (PCM)</p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-200">Secondary (Class 10th)</h3>
-            <p className="text-sm text-gray-400">Kendriya Vidyalaya No.1, Delhi Cantt - 10</p>
+            <h3 className="max-md:aos text-lg font-semibold text-gray-200">Secondary (Class 10th)</h3>
+            <p className="max-md:aos text-sm text-gray-400">Kendriya Vidyalaya No.1, Delhi Cantt - 10</p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-gray-200">Self-Taught Frontend Developer</h3>
-            <p className="text-sm text-gray-400">
+            <h3 className="max-md:aos text-lg font-semibold text-gray-200">Self-Taught Frontend Developer</h3>
+            <p className="max-md:aos text-sm text-gray-400">
               Gained hands-on experience in <span className="text-white font-medium">React</span>, <span className="text-white font-medium">JavaScript</span>, and <span className="text-white font-medium">UI/UX Design</span> through real-world projects. I continuously learn via open-source docs, YouTube, and dev communities.
             </p>
           </div>

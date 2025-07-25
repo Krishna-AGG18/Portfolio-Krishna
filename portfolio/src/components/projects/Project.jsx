@@ -140,7 +140,7 @@ function Project() {
                         {projects.map((project, index) => (
                             <SpotlightCard
                                 key={index}
-                                className="bg-zinc-900 border border-gray-800 p-4 rounded-xl text-white hover:shadow-lg transition-all duration-300"
+                                className="aos bg-zinc-900 border border-gray-800 p-4 rounded-xl text-white hover:shadow-lg transition-all duration-300"
                                 spotlightColor="rgba(255, 255, 255, 0.1)"
                             >
                                 <h3 className="text-lg font-semibold mb-2">{project.title}</h3>

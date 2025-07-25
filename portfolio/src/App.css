@@ -1,34 +1,39 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body{
-      font-family: "Poppins", sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
 
 @keyframes shine {
   0% {
     background-position: 200% center;
   }
+
   100% {
     background-position: -200% center;
   }
 }
+
 /* Custom black scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #000000; /* black track */
+  background: #000000;
+  /* black track */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #000000; /* black thumb */
+  background-color: #000000;
+  /* black thumb */
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #000000; /* slightly lighter on hover */
+  background-color: #000000;
+  /* slightly lighter on hover */
 }
 
 .customs-scrollbar::-webkit-scrollbar {
@@ -36,20 +41,42 @@ body{
 }
 
 .customs-scrollbar::-webkit-scrollbar-track {
-  background: #000000; /* black track */
+  background: #000000;
+  /* black track */
 }
 
 .customs-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #434343; /* black thumb */
+  background-color: #434343;
+  /* black thumb */
   border-radius: 10px;
 }
 
 .customs-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #000000; /* slightly lighter on hover */
+  background-color: #000000;
+  /* slightly lighter on hover */
 }
 
+@media (min-width: 768px) {
+  .aos {
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+}
 
- /* const projects = [
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* const projects = [
         {
             title: 'ThoughtHaven',
             description: 'A full-featured blog app with user auth, basic CRUD operations, rich text editing, and responsive UI.',
