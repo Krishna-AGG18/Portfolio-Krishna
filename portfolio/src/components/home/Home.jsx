@@ -48,13 +48,18 @@ function Home() {
           handle="Krishna."
           status="Online"
           contactText="Contact"
-          avatarUrl="https://i.pinimg.com/736x/3c/6c/62/3c6c6282e676e6565600cc004c7a1b90.jpg"
+          avatarUrl="/krishna.jpg"
           showUserInfo={true}
-          miniAvatarUrl="https://i.pinimg.com/736x/3c/6c/62/3c6c6282e676e6565600cc004c7a1b90.jpg"
+          miniAvatarUrl="https://i.pinimg.com/1200x/16/02/bf/1602bfa261fec383d6e732a015989c7c.jpg"
           enableTilt={true}
-          grainUrl="https://i.pinimg.com/736x/ba/16/3b/ba163b33fa05dd0f72cbd1aae89a0892.jpg"
+          grainUrl="https://i.pinimg.com/736x/68/65/70/6865704bad48b1266a355f144ca9e370.jpg"
           enableMobileTilt={true}
-          onContactClick={() => console.log('Contact clicked')}
+          onContactClick={() => {
+            const contactSection = document.getElementById('Contact');
+            if (contactSection) {
+              contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           className="max-h-[700px]"
         />
       </div>

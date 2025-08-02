@@ -12,6 +12,13 @@ function Project() {
             github: 'https://github.com/Krishna-AGG18/ThoughtHaven',
         },
         {
+            title: 'Kuch Toh Naam',
+            description: 'A responsive e-commerce frontend with product browsing, cart management, category filters, search, skeleton loaders, and checkout — all powered by React and Tailwind.',
+            stack: ['React', 'Tailwind CSS', 'Vite', 'React Router'],
+            live: 'https://kuchhtohnaam.netlify.app/', // Replace with your actual deployed link
+            github: 'https://github.com/Krishna-AGG18/MyEcommerce' // Replace with your actual repo link
+        },
+        {
             title: 'EchoSait',
             description: 'A dynamic text-to-speech web app featuring custom voice selection, real-time speech synthesis, and a sleek, responsive UI.',
             stack: ['React', 'Web Speech API', 'Tailwind'],
