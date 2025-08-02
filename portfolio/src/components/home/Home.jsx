@@ -52,7 +52,7 @@ function Home() {
           showUserInfo={true}
           miniAvatarUrl="https://i.pinimg.com/1200x/16/02/bf/1602bfa261fec383d6e732a015989c7c.jpg"
           enableTilt={true}
-          grainUrl="https://i.pinimg.com/736x/68/65/70/6865704bad48b1266a355f144ca9e370.jpg"
+          grainUrl="https://i.pinimg.com/736x/63/15/98/631598ca0906fdbfc7d4e1b2e77748b5.jpg"
           enableMobileTilt={true}
           onContactClick={() => {
             const contactSection = document.getElementById('Contact');
