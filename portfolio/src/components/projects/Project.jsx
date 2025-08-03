@@ -12,6 +12,13 @@ function Project() {
             github: 'https://github.com/Krishna-AGG18/ThoughtHaven',
         },
         {
+            title: 'ASKIO',
+            description: 'A versatile AI-powered chatbot built with Gemini API. Features include chat, text generation, story writing, code explanation, and translation—all wrapped in a sleek and responsive React UI.',
+            stack: ['React', 'Google Gemini API (@google/genai)', 'Tailwind CSS', 'OGL', 'React Router'],
+            live: 'https://askio.netlify.app',
+            github: 'https://github.com/Krishna-AGG18/APIchatbot'
+        },
+        {
             title: 'Kuch Toh Naam',
             description: 'A responsive e-commerce frontend with product browsing, cart management, category filters, search, skeleton loaders, and checkout — all powered by React and Tailwind.',
             stack: ['React', 'Tailwind CSS', 'Vite', 'React Router'],
