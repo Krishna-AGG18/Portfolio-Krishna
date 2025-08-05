@@ -1,29 +1,26 @@
 import React from 'react';
-import LightRays from '../LightRays/LightRays';
-
+import Particles from '../Particles/Particles';
 function About() {
   return (
-    <div className="relative w-full min-h-screen px-4 py-16 overflow-hidden bg-black text-white">
+    <div className="relative w-full min-h-screen px-4 py-16 overflow-hidden bg-gradient-to-tl from-black via-gray-900 to-black text-white">
       {/* Background LightRays */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#ffffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="w-[100dvw] h-full"
+      <div className="absolute inset-0 z-0">
+        <Particles
+          particleColors={['#ffffff', '#ffffff']}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={true}
         />
       </div>
 
       {/* Foreground Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* About Text */}
-        <div className="space-y-6">
+        <div className="space-y-6 backdrop-blur-[2px]">
           <h2 className="text-2xl md:text-3xl font-bold border-b border-gray-700 pb-2 max-md:text-center">
             ✨ About Me
           </h2>
@@ -55,7 +52,7 @@ function About() {
         </div>
 
         {/* Education Section */}
-        <div className="space-y-6">
+        <div className="space-y-6 backdrop-blur-[2px]">
           <h2 className="text-2xl md:text-3xl font-bold border-b border-gray-700 pb-2 max-md:text-center">
             🎓 Education
           </h2>

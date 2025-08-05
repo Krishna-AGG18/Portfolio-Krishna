@@ -1,5 +1,5 @@
 import React from 'react'
-import Silk from '../Silk/Silk'
+import Particles from '../Particles/Particles'
 import SpotlightCard from '../SpotlightCard/SpotlightCard'
 
 const skills = [
@@ -26,14 +26,17 @@ const skills = [
 
 function Skill() {
     return (
-        <div className="relative w-full min-h-screen px-4 py-16 overflow-hidden bg-black text-white">
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <Silk
-                    speed={5}
-                    scale={1}
-                    color="#7B7481"
-                    noiseIntensity={1.5}
-                    rotation={0}
+        <div className="relative w-full min-h-screen px-4 py-16 overflow-hidden bg-gradient-to-br from-black via-[#2a0a0a] to-[#7b1e1e]  text-white">
+           <div className="absolute inset-0 z-0">
+                <Particles
+                    particleColors={['#ffffff', '#ffffff']}
+                    particleCount={300}
+                    particleSpread={10}
+                    speed={0.1}
+                    particleBaseSize={100}
+                    moveParticlesOnHover={true}
+                    alphaParticles={false}
+                    disableRotation={true}
                 />
             </div>
 
@@ -42,10 +45,10 @@ function Skill() {
                     🧠 Technologies I Work With
                 </h2>
                <div className="h-auto md:h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
-                <div className="grid grid-cols-2 overflow-y-auto md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 place-items-center">
+                <div className="grid grid-cols-2 overflow-y-auto md:grid-cols-4  px-2 py-8 lg:grid-cols-5 xl:grid-cols-6 gap-6 place-items-center">
                     {skills.map((skill, index) => (
                         <SpotlightCard
-                            className="custom-spotlight-card cursor-pointer flex flex-col items-center p-4"
+                            className="custom-spotlight-card cursor-pointer flex flex-col items-center p-4 bg-white/10 backdrop-blur-sm border border-gray-800 rounded-xl text-white hover:shadow-lg transition-all duration-300"
                             spotlightColor="rgba(255, 255, 255, 0.3)"
                             key={index}
                         >

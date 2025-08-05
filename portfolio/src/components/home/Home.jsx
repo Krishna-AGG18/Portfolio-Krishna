@@ -1,9 +1,8 @@
 import React from 'react'
-import ProfileCard from '../ProfileCard/ProfileCard'
 import FuzzyText from '../FuzzyText/FuzzyText'
 import ShinyText from '../ShinyText/ShinyText'
 import Particles from '../Particles/Particles'
-
+import TiltedCard from '../TiltedCard/TiltedCard'
 function Home() {
   return (
     <div className="relative w-full h-[100dvh] overflow-hidden">
@@ -42,26 +41,25 @@ function Home() {
           </ShinyText>
         </div>
 
-        <ProfileCard
-          name="Krishna"
-          title="Software Engineer"
-          handle="Krishna."
-          status="Online"
-          contactText="Contact"
-          avatarUrl="/krishna.jpg"
-          showUserInfo={true}
-          miniAvatarUrl="https://i.pinimg.com/1200x/16/02/bf/1602bfa261fec383d6e732a015989c7c.jpg"
-          enableTilt={true}
-          grainUrl="https://i.pinimg.com/736x/63/15/98/631598ca0906fdbfc7d4e1b2e77748b5.jpg"
-          enableMobileTilt={true}
-          onContactClick={() => {
-            const contactSection = document.getElementById('Contact');
-            if (contactSection) {
-              contactSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
-          className="max-h-[700px]"
-        />
+        <TiltedCard
+  imageSrc="/krishna.jpg"
+  altText="Krishna Aggarwal"
+  captionText="Krishna Aggarwal"
+  containerHeight="400px"
+  containerWidth="300px"
+  imageHeight="400px"
+  imageWidth="300px"
+  rotateAmplitude={12}
+  scaleOnHover={1.2}
+  showMobileWarning={false}
+  showTooltip={true}
+  displayOverlayContent={true}
+  overlayContent={
+    <p className="tilted-card-demo-text">
+      Krishna Aggarwal
+    </p>
+  }
+/>
       </div>
     </div>
   )

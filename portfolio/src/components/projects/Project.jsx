@@ -1,7 +1,6 @@
 import React from 'react';
-import Beams from '../Beams/Beams';
 import SpotlightCard from '../SpotlightCard/SpotlightCard';
-
+import Particles from '../Particles/Particles';
 function Project() {
     const projects = [
         {
@@ -127,18 +126,18 @@ function Project() {
     ];
 
     return (
-        <div className="relative w-full min-h-screen px-4 py-20 bg-black text-white">
+        <div className="relative w-full min-h-screen px-4 py-20 bg-gradient-to-br from-black via-[#0b0f2f] to-[#1a1f4a]  text-white">
             {/* Background Beams */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <Beams
-                    beamWidth={3}
-                    beamHeight={30}
-                    beamNumber={12}
-                    lightColor="#ffffff"
-                    speed={2}
-                    noiseIntensity={1.75}
-                    scale={0.2}
-                    rotation={30}
+            <div className="absolute inset-0 z-0">
+                <Particles
+                    particleColors={['#ffffff', '#ffffff']}
+                    particleCount={200}
+                    particleSpread={10}
+                    speed={0.1}
+                    particleBaseSize={100}
+                    moveParticlesOnHover={true}
+                    alphaParticles={false}
+                    disableRotation={true}
                 />
             </div>
 
@@ -154,8 +153,8 @@ function Project() {
                         {projects.map((project, index) => (
                             <SpotlightCard
                                 key={index}
-                                className="aos bg-zinc-900 border border-gray-800 p-4 rounded-xl text-white hover:shadow-lg transition-all duration-300"
-                                spotlightColor="rgba(255, 255, 255, 0.1)"
+                                className="aos backdrop-blur-sm bg-white/1 border border-gray-800 p-4 rounded-xl text-white hover:shadow-lg transition-all duration-300 "
+                                spotlightColor="rgba(255, 255, 255, 0.5)"
                             >
                                 <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
                                 <p className="text-sm text-gray-400 mb-3">{project.description}</p>

@@ -18,7 +18,7 @@ function App() {
         <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center bg-black text-white" id='About'>
           <About />
         </div>
-        <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-800 to-pink-800 text-white" id='Projects'>
+        <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Projects'>
           <Project />
         </div>
         <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Skills'>
