@@ -35,10 +35,6 @@ function Home() {
             I craft responsive, user-friendly web interfaces with React and modern frontend tools.
             Currently leveling up my skills in backend development with Java and diving into the worlds of Artificial Intelligence and Web3.
           </ShinyText>
-
-          <ShinyText speed={4} className="mt-1 max-md:aos text-sm md:text-base px-4 py-2">
-            Let’s build something amazing together.
-          </ShinyText>
         </div>
 
         <TiltedCard
