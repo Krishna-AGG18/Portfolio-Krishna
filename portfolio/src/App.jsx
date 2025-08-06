@@ -12,7 +12,7 @@ function App() {
       <Header />
       <div className="relative">
         {/* Desktop: Parallax using sticky, Mobile: Normal flow using Tailwind responsive classes */}
-        <div className="md:sticky md:top-0 min-h-screen flex flex-row items-center overflow-hidden bg-black" id='Home'>
+        <div className="md:sticky md:top-0 min-h-screen flex flex-row items-center bg-black" id='Home'>
           <Home />
         </div>
         <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center bg-black text-white" id='About'>

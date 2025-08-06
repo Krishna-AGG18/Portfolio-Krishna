@@ -5,7 +5,7 @@ import Particles from '../Particles/Particles'
 import TiltedCard from '../TiltedCard/TiltedCard'
 function Home() {
   return (
-    <div className="relative w-full h-[100dvh] overflow-hidden">
+    <div className="relative w-full min-h-screen py-16 text-white">
       {/* Background Particles */}
       <div className="absolute inset-0 z-0">
         <Particles
@@ -21,8 +21,8 @@ function Home() {
       </div>
 
       {/* Foreground Content */}
-      <div className="absolute inset-0 z-10 px-4 py-10 flex justify-center items-center max-md:flex-col-reverse max-md:justify-evenly gap-8 overflow-y-auto">
-        <div className="flex flex-col px-2 text-white max-w-xl">
+      <div className="absolute inset-0 z-10 px-4 py-10 flex justify-center items-center max-md:flex-col-reverse max-md:justify-evenly gap-8 overflow-y-auto min-h-screen">
+        <div className="flex flex-col px-2 text-white max-w-xl backdrop-blur-sm">
           <FuzzyText baseIntensity={0.01} hoverIntensity={0.5} enableHover={true}>
             Hey there! I’m Krishna
           </FuzzyText>
