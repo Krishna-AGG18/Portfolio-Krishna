@@ -31,7 +31,7 @@ function Home() {
             Frontend Developer | React Enthusiast | Exploring Java, AI & Web3
           </p>
 
-          <ShinyText speed={4} className="mt-1 max-md:aos text-sm md:text-base px-4 py-2">
+          <ShinyText speed={4} className="mt-1 max-md:aos text-sm md:text-base px-4 pt-2 pb-5">
             I craft responsive, user-friendly web interfaces with React and modern frontend tools.
             Currently leveling up my skills in backend development with Java and diving into the worlds of Artificial Intelligence and Web3.
           </ShinyText>
