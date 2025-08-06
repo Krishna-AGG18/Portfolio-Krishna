@@ -5,7 +5,7 @@ import Particles from '../Particles/Particles'
 import TiltedCard from '../TiltedCard/TiltedCard'
 function Home() {
   return (
-    <div className="relative w-full min-h-screen py-16 text-white">
+    <div className="relative w-full min-h-screen py-16 max-xs:py-30 text-white">
       {/* Background Particles */}
       <div className="absolute inset-0 z-0">
         <Particles
