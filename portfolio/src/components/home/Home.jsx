@@ -21,7 +21,7 @@ function Home() {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative z-10 px-4 max-md:py-10 py-2 flex justify-center items-center max-md:flex-col-reverse max-md:justify-evenly gap-8 md:gap-16 min-h-screen">
+      <div className="relative z-10 px-4 max-md:py-10 py-2 flex justify-center items-center max-md:flex-col-reverse gap-16 min-h-screen">
         <div className="flex flex-col px-2 text-white max-w-xl backdrop-blur-sm max-xs:py-4">
           <FuzzyText baseIntensity={0.01} hoverIntensity={0.5} enableHover={true}>
             Hey there! I’m Krishna
