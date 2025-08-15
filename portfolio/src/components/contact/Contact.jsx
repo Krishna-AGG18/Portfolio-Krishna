@@ -84,7 +84,7 @@ function Contact() {
           {/* Social Media Icons */}
           <div className="mt-12 p-8 rounded-2xl max-w-md mx-auto bg-zinc-800/60 backdrop-blur-md shadow-xl border border-zinc-700">
             <h3 className="text-xl font-semibold text-center text-white mb-6">Connect with me</h3>
-            <div className="flex justify-center gap-6">
+            <div className="flex justify-center gap-3 xs:gap-6">
               <SocialIcon
                 href="https://www.linkedin.com/in/krishnawd"
                 icon={<FaLinkedin className="text-blue-600" />}
