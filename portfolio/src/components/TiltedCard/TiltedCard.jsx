@@ -76,9 +76,16 @@ export default function TiltedCard({
       ref={ref}
       className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
       style={{
-        height: containerHeight,
-        width: containerWidth,
-      }}
+  height:
+    window.innerWidth <= 400
+      ? `calc(${containerHeight} - 100px)`
+      : containerHeight,
+  width:
+    window.innerWidth <= 400
+      ? `calc(${containerWidth} - 50px)`
+      : containerWidth,
+}}
+
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -92,8 +99,14 @@ export default function TiltedCard({
       <motion.div
         className="relative [transform-style:preserve-3d]"
         style={{
-          width: imageWidth,
-          height: imageHeight,
+           height:
+    window.innerWidth <= 400
+      ? `calc(${containerHeight} - 100px)`
+      : containerHeight,
+  width:
+    window.innerWidth <= 400
+      ? `calc(${containerWidth} - 50px)`
+      : containerWidth,
           rotateX,
           rotateY,
           scale,

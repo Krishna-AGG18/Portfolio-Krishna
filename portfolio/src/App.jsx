@@ -12,19 +12,19 @@ function App() {
       <Header />
       <div className="relative">
         {/* Desktop: Parallax using sticky, Mobile: Normal flow using Tailwind responsive classes */}
-        <div className="md:sticky md:top-0 min-h-screen flex flex-row items-center bg-black" id='Home'>
+        <div className="relative min-h-screen flex flex-row items-center bg-black" id='Home'>
           <Home />
         </div>
-        <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center bg-black text-white" id='About'>
+        <div className="relative min-h-screen flex flex-col items-center bg-black text-white" id='About'>
           <About />
         </div>
-        <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Projects'>
+        <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Projects'>
           <Project />
         </div>
-        <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Skills'>
+        <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Skills'>
           <Skill />
         </div>
-        <div className="md:sticky md:top-0 min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Contact'>
+        <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white" id='Contact'>
           <Contact />
         </div>
       </div>

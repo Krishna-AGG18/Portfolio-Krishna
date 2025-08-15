@@ -3,3 +3,11 @@
 @theme {
   --breakpoint-xs: 484px;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 80px; /* adjust to your navbar height */
+}
