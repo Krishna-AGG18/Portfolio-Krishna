@@ -1,11 +1,12 @@
 import React from "react";
 import Particles from "./Particles/Particles";
 import Navbar from "./Navbar";
+import First from "./First";
 
 function Home() {
   return (
     <div className="relative min-h-screen w-full bg-black">
-      <div className="w-full min-h-screen">
+      <div className="w-full min-h-screen absolute top-0 z-0">
         <Particles
           particleColors={['#ffffff', '#ffffff']}
           particleCount={300}
@@ -17,9 +18,15 @@ function Home() {
           disableRotation={false}
         />
       </div>
-      <div className="absolute top-0 text-white backdrop-blur-[1px] w-full h-full">
+      <div className="relative top-0 text-white backdrop-blur-[1px] w-full h-full">
         <Navbar />
-        <h1 className="mt-16 text-center text-2xl z-0">helo</h1>
+        <div className="z-10 w-full h-full">
+          <First />
+        </div>
+        <div className="z-10 h-full">
+          {/* <First /> */}
+          <h1>hello</h1>
+        </div>
       </div>
     </div>
   );

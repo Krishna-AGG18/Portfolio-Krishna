@@ -212,7 +212,7 @@ const Particles = ({
     };
   }, [particleData, particleSpread, speed, moveParticlesOnHover, particleHoverFactor, alphaParticles, particleBaseSize, sizeRandomness, cameraDistance, disableRotation]);
 
-  return <div ref={containerRef} className={`relative w-screen min-h-screen ${className}`} />;
+  return <div ref={containerRef} className={`relative w-full min-h-screen ${className}`} />;
 };
 
 export default Particles;
