@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import First from "./First";
 import About from "./About"
 import Project from "./Project";
+import Skill from "./Skill";
+import ContactForm from "./ContactForm";
 
 function Home() {
   return (
@@ -31,6 +33,15 @@ function Home() {
 
         <div className="w-full flex items-center h-fit xs:min-h-screen md:mt-4 z-10" id="projects">
             <Project />
+        </div>
+
+        <div className="w-full h-fit xs:min-h-screen pt-20" id="skills">
+          <h1 className="border-b mx-4 border-b-gray-500 text-lg xs:text-4xl font-bold max-sm:text-center mb-4 ">✨My Tech Stack...</h1>
+          <Skill />
+        </div>
+
+        <div className="w-full h-fit md:min-h-screen" id="contact">
+          <ContactForm />
         </div>
       </div>
     </div>

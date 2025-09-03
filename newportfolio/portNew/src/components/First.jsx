@@ -20,7 +20,7 @@ function First() {
                 </div>
             </div>
             <div className="flex-1 md:flex-1/2 p-2" >
-                <img src="https://i.pinimg.com/736x/fa/d5/e7/fad5e79954583ad50ccb3f16ee64f66d.jpg" alt="Krishna's pic" className="aspect-1/1 object-cover object-center rounded-lg" />
+                <img src="/krishna.png" alt="Krishna's pic" className="aspect-1/1 object-cover object-center rounded-lg" />
             </div>
 
         </div>

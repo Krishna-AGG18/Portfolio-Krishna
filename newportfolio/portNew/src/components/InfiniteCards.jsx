@@ -46,15 +46,49 @@ const InfiniteCards = ({ cards, duration = 20 }) => {
     <div className="overflow-hidden relative w-full">
       <motion.div
         ref={carouselRef}
-        className="flex"
+        className="flex gap-2"
         animate={controls}
         style={{ willChange: "transform" }}
       >
         {duplicatedCards.map((card, index) => (
           <div key={index} className="flex-shrink-0 w-80 p-4">
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-xl font-bold">{card.title}</h3>
-              <p className="text-gray-600">{card.content}</p>
+            <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-lg p-6 w-80 h-72 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold">{card.title}</h3>
+                <p className="text-gray-300 mt-2 line-clamp-3">{card.description}</p>
+              </div>
+
+              {/* Tech Stack */}
+              <ul className="flex flex-wrap gap-2 mt-3">
+                {card.stack.map((tech, index) => (
+                  <li
+                    key={index}
+                    className="px-3 py-1 bg-[#615fff] text-white text-sm rounded-lg"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Links */}
+              <div className="flex gap-4 mt-4">
+                <a
+                  href={card.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#615fff] font-medium hover:underline"
+                >
+                  Live
+                </a>
+                <a
+                  href={card.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#b2b2ce] font-medium hover:underline"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
         ))}
