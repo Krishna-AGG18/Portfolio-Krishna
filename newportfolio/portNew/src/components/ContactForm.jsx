@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -8,30 +9,53 @@ function ContactForm() {
     message: ''
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send to API or email service)
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', mobile: '', message: '' });
+
+    // Prepare form data for submission
+    const submissionData = {
+      ...formData,
+      _honey: '', // Anti-bot
+      _captcha: 'false',
+      _next: 'https://krishnaaggarwal.netlify.app/thankyou',
+    };
+
+    try {
+      const response = await fetch('https://formsubmit.co/krishna.2006.work24@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      if (response.ok) {
+        console.log('Form submitted successfully');
+        // Reset form
+        setFormData({ name: '', email: '', mobile: '', message: '' });
+        // Navigate to thank you page
+        navigate('/thankyou');
+      } else {
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
+    }
   };
 
   return (
     <section id="contact" className="py-16 bg-transparent text-white">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-bold mb-8 text-center text-orange-400">Contact Me</h2>
-        <form onSubmit={handleSubmit} className="space-y-6" action="https://formsubmit.co/krishna.2006.work24@gmail.com"
-            method="POST">
-          {/* Anti-bot */}
-            <input type="text" name="_honey" style={{ display: 'none' }} />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://krishnaaggarwal.netlify.app/thankyou" />
-
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2 text-orange-400">Name</label>
             <input
