@@ -19,35 +19,33 @@ function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare form data for submission
-    const submissionData = {
-      ...formData,
-      _honey: '', // Anti-bot
-      _captcha: 'false',
-      _next: 'https://krishnaaggarwal.netlify.app/thankyou',
-    };
+    // Create FormData object instead of JSON
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("mobile", formData.mobile);
+    formDataToSend.append("message", formData.message);
+
+    // Hidden fields for FormSubmit
+    formDataToSend.append("_honey", "");
+    formDataToSend.append("_captcha", "false");
+    formDataToSend.append("_next", "https://krishnaaggarwal.netlify.app/thankyou");
 
     try {
-      const response = await fetch('https://formsubmit.co/krishna.2006.work24@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(submissionData),
+      const response = await fetch("https://formsubmit.co/krishna.2006.work24@gmail.com", {
+        method: "POST",
+        body: formDataToSend,
       });
 
       if (response.ok) {
-        console.log('Form submitted successfully');
-        // Reset form
+        console.log("Form submitted successfully");
         setFormData({ name: '', email: '', mobile: '', message: '' });
-        // Navigate to thank you page
         navigate('/thankyou');
       } else {
-        console.error('Form submission failed');
+        console.error("Form submission failed");
       }
     } catch (error) {
-      console.error('Error during form submission:', error);
+      console.error("Error during form submission:", error);
     }
   };
 
