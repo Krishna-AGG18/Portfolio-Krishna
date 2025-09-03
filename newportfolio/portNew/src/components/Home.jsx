@@ -29,7 +29,7 @@ function Home() {
           <About />
         </div>
 
-        <div className="w-full  h-fit xs:min-h-screen md:mt-4 z-10" id="projects">
+        <div className="w-full flex items-center h-fit xs:min-h-screen md:mt-4 z-10" id="projects">
             <Project />
         </div>
       </div>
