@@ -65,18 +65,19 @@ function ContactForm() {
         <div className="mt-8 text-center">
           <h3 className="text-xl font-semibold mb-4 text-orange-400">Connect with Me</h3>
           <div className="flex justify-center space-x-6">
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
+            <a href="https://linkedin.com/in/krishnawd" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
               LinkedIn
             </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
+            <a href="https://github.com/krishna-agg18" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
               GitHub
             </a>
-            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
+            <a href="https://instagram.com/krishna_339l" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
               Instagram
             </a>
-            <a href="https://leetcode.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
+            <a href="https://leetcode.com/krishna_2909" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-500">
               LeetCode
             </a>
+            
           </div>
         </div>
       </div>
