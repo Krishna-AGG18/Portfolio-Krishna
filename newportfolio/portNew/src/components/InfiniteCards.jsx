@@ -1,25 +1,28 @@
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-const InfiniteCards = ({ cards, duration = 20 }) => {
+const InfiniteCards = ({ cards, duration = 20, delay = 0 }) => {
   const controls = useAnimation();
   const carouselRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Dynamically calculate duplicates based on viewport (at least 2 sets, more for wide screens)
+  // Dynamically duplicate cards based on screen width
   const duplicatedCards = useMemo(() => {
-    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
-    const cardWidth = 80 + 8 * 2; // w-80 + p-4 (assuming 1rem=16px)
+    const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    const cardWidth = 80 + 8 * 2; // w-80 + p-4 (1rem = 16px)
     const cardsPerSet = cards.length;
-    const setsNeeded = Math.ceil(viewportWidth / (cardWidth * cardsPerSet)) + 1; // +1 for safety
+    const setsNeeded = Math.ceil(viewportWidth / (cardWidth * cardsPerSet)) + 1;
     return Array.from({ length: setsNeeded }).flatMap(() => cards);
   }, [cards]);
 
   useLayoutEffect(() => {
     let isMounted = true;
+
     const startAnimation = () => {
-      if (carouselRef.current && isMounted) {
+      if (carouselRef.current && isMounted && !isPaused) {
         const totalWidth = carouselRef.current.scrollWidth;
-        const singleSetWidth = totalWidth / (duplicatedCards.length / cards.length);
+        const singleSetWidth =
+          totalWidth / (duplicatedCards.length / cards.length);
 
         controls.start({
           x: -singleSetWidth,
@@ -38,12 +41,26 @@ const InfiniteCards = ({ cards, duration = 20 }) => {
 
     return () => {
       isMounted = false;
-      controls.stop(); // Cleanup to stop animation on unmount
+      controls.stop();
     };
-  }, [controls, duplicatedCards, duration, cards.length]);
+  }, [controls, duplicatedCards, duration, cards.length, isPaused]);
+
+  // Handle pause/resume with delay
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+    controls.stop();
+  };
+
+  const handleMouseLeave = () => {
+    setTimeout(() => setIsPaused(false), delay * 1000);
+  };
 
   return (
-    <div className="overflow-hidden relative w-full">
+    <div
+      className="overflow-hidden relative w-full"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <motion.div
         ref={carouselRef}
         className="flex gap-2"
@@ -55,7 +72,9 @@ const InfiniteCards = ({ cards, duration = 20 }) => {
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-lg p-6 w-80 h-72 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-bold">{card.title}</h3>
-                <p className="text-gray-300 mt-2 line-clamp-3">{card.description}</p>
+                <p className="text-gray-300 mt-2 line-clamp-3">
+                  {card.description}
+                </p>
               </div>
 
               {/* Tech Stack */}
