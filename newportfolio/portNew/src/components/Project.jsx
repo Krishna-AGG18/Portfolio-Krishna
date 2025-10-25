@@ -171,13 +171,13 @@ function Project() {
       </h1>
       <div className="w-full xs:mt-4 ">
         <div className=" flex  justify-center bg-transparent">
-          <InfiniteCards cards={fullstackProjects} />
+          <InfiniteCards cards={fullstackProjects} delay={1}/>
         </div>
         <div className="flex  justify-center bg-transparent">
-          <InfiniteCards cards={reactPracticeProjects} />
+          <InfiniteCards cards={reactPracticeProjects} delay={2}/>
         </div>
         <div className=" flex  justify-center bg-transparent">
-          <InfiniteCards cards={vanillaProjects} />
+          <InfiniteCards cards={vanillaProjects} delay={3}/>
         </div>
       </div>
     </div>
