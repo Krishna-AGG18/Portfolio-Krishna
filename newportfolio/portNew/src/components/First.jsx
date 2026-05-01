@@ -17,16 +17,16 @@ function First() {
                 <div className="mt-8 flex md:gap-6 max-md:justify-between items-center w-full">
                     <button className="cursor-pointer inline-block px-6 py-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all duration-300 rounded-md text-sm font-semibold">
                         <a
-                       href="/#contact"
-                       target="_blank"
-                       rel="nonopener noreferrer">
+                       href="#contact"
+                    >
                         Contact Me
                        </a>
                     </button>
                     <button className="cursor-pointer inline-block px-6 py-2 border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-all duration-300 rounded-md text-sm font-semibold">
                        <a
                        href="/krishna_resume.pdf"
-                       >
+                       target="_blank"
+                       rel="nonopener noreferrer">
                         Resume
                         </a> 
                     </button>
