@@ -2,8 +2,15 @@
 
 import { motion } from "framer-motion";
 import { Code2, Compass, Cpu, Database, Layout, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function About() {
+  const [cacheBuster, setCacheBuster] = useState("");
+
+  useEffect(() => {
+    setCacheBuster(new Date().getTime().toString());
+  }, []);
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -94,16 +101,18 @@ export function About() {
             <h3 className="text-xl font-semibold mb-8">GitHub Contributions</h3>
             <div className="flex flex-col gap-8 w-full items-center">
               <img 
-                src="https://streak-stats.demolab.com/?user=Krishna-AGG18&theme=transparent&hide_border=true&title_color=3b82f6&text_color=a1a1aa&icon_color=3b82f6&background=transparent" 
+                src={`https://streak-stats.demolab.com/?user=Krishna-AGG18&theme=transparent&hide_border=true&title_color=3b82f6&text_color=a1a1aa&icon_color=3b82f6&background=transparent&v=${cacheBuster}`} 
                 alt="Krishna Aggarwal's GitHub Stats" 
                 className="max-w-full"
                 loading="lazy"
+                suppressHydrationWarning
               />
               <img 
-                src="https://github-readme-activity-graph.vercel.app/graph?username=Krishna-AGG18&theme=react-dark&bg_color=transparent&hide_border=true&color=3b82f6&line=3b82f6&point=fafafa" 
+                src={`https://github-readme-activity-graph.vercel.app/graph?username=Krishna-AGG18&theme=react-dark&bg_color=transparent&hide_border=true&color=3b82f6&line=3b82f6&point=fafafa&v=${cacheBuster}`} 
                 alt="Krishna Aggarwal's GitHub Activity Graph" 
                 className="max-w-full w-full"
                 loading="lazy"
+                suppressHydrationWarning
               />
             </div>
           </motion.div>
