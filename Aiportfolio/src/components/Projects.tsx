@@ -32,14 +32,6 @@ const projects = [
     live: "https://askio.netlify.app"
   },
   {
-    title: "Kuch Toh Naam",
-    description: "A feature-rich e-commerce frontend complete with a dynamic shopping cart, product filtering, search functionality, loading states, and a smooth checkout flow.",
-    tech: ["React", "Tailwind CSS", "Vite", "React Router"],
-    category: "Full Stack",
-    github: "https://github.com/Krishna-AGG18/MyEcommerce",
-    live: "https://kuchhtohnaam.netlify.app/"
-  },
-  {
     title: "Note Nostre",
     description: "A full-stack notes application powered by Firebase, featuring secure user authentication and seamless real-time data synchronization.",
     tech: ["React", "Firebase", "Tailwind"],
@@ -47,63 +39,39 @@ const projects = [
     github: "https://github.com/Krishna-AGG18/NoteNostre",
     live: "https://note-nostre.netlify.app"
   },
-  {
-    title: "Personal Portfolio",
-    description: "A highly responsive and visually engaging personal portfolio website featuring a functional contact form integrated with EmailJS.",
-    tech: ["React", "Tailwind", "EmailJS"],
-    category: "Full Stack",
-    github: "https://github.com/Krishna-AGG18/React-learning/tree/main/portfolioCA",
-    live: "https://karanaggarwal.netlify.app"
-  },
 
-  // React Practice
+  // Frontend
   {
-    title: "EchoSait",
-    description: "An interactive text-to-speech application featuring custom voice selection and a clean, responsive user interface.",
-    tech: ["React", "Web Speech API", "Tailwind"],
-    category: "React Practice",
-    github: "https://github.com/Krishna-AGG18/jsSpeechTest",
-    live: "https://echosait.netlify.app"
-  },
-  {
-    title: "React Dice Duel",
-    description: "An engaging dice game application developed specifically to master React state management and conditional rendering techniques.",
-    tech: ["React", "Tailwind"],
-    category: "React Practice",
-    github: "https://github.com/Krishna-AGG18/React-learning/tree/main/DiceGame",
-    live: "https://revdicegame.netlify.app"
-  },
-  {
-    title: "Redux To-Do App",
-    description: "A robust task management application utilizing Redux Toolkit to handle complex global state for creating, updating, and deleting to-dos.",
-    tech: ["React", "Redux Toolkit", "Tailwind"],
-    category: "React Practice",
-    github: "https://github.com/Krishna-AGG18/React-learning/tree/main/reduxToolkitTodo",
-    live: "https://react-redux-todoapp-krishna.netlify.app/"
+    title: "Kuch Toh Naam",
+    description: "A feature-rich e-commerce frontend complete with a dynamic shopping cart, product filtering, search functionality, loading states, and a smooth checkout flow.",
+    tech: ["React", "Tailwind CSS", "Vite", "React Router"],
+    category: "Frontend",
+    github: "https://github.com/Krishna-AGG18/MyEcommerce",
+    live: "https://kuchhtohnaam.netlify.app/"
   },
   {
     title: "CurrencyXchange",
     description: "A dynamic currency converter offering real-time exchange rates, currency swapping functionality, and implemented using custom React hooks.",
     tech: ["React", "Custom Hooks", "Tailwind"],
-    category: "React Practice",
+    category: "Frontend",
     github: "https://github.com/Krishna-AGG18/React-learning/tree/main/06-currencyExchange",
     live: "https://currency-exchnge-react.netlify.app"
   },
   {
-    title: "ScribeSpace",
-    description: "A minimalist note-taking application designed for simplicity, allowing users to create, edit, and delete notes within a clean UI.",
-    tech: ["React", "Bootstrap", "Tailwind"],
-    category: "React Practice",
-    github: "https://github.com/Krishna-AGG18/ScribeSpace-notes",
-    live: "https://scribespace.netlify.app"
+    title: "Redux To-Do App",
+    description: "A robust task management application utilizing Redux Toolkit to handle complex global state for creating, updating, and deleting to-dos.",
+    tech: ["React", "Redux Toolkit", "Tailwind"],
+    category: "Frontend",
+    github: "https://github.com/Krishna-AGG18/React-learning/tree/main/reduxToolkitTodo",
+    live: "https://react-redux-todoapp-krishna.netlify.app/"
   },
 
-  // Vanilla JS
+  // Browser Games
   {
     title: "Classic Snake Game",
     description: "A responsive recreation of the classic Snake game, built entirely from scratch using pure JavaScript, HTML, and CSS.",
     tech: ["JavaScript", "HTML", "CSS"],
-    category: "Vanilla JS",
+    category: "Browser Games",
     github: "https://github.com/Krishna-AGG18/Snake-Game",
     live: "https://snakegame-sait.netlify.app"
   },
@@ -111,53 +79,21 @@ const projects = [
     title: "Hangman Challenge",
     description: "An interactive hangman game complete with word clues, progressive canvas drawings, and a strict 6-attempt limit.",
     tech: ["JavaScript", "HTML", "CSS"],
-    category: "Vanilla JS",
+    category: "Browser Games",
     github: "https://github.com/Krishna-AGG18/Hangman_game",
     live: "https://hangman-sait.netlify.app"
-  },
-  {
-    title: "Rock Paper Scissors",
-    description: "A responsive Rock Paper Scissors game that tracks scores and displays visual outcomes based on player choices.",
-    tech: ["JavaScript", "HTML", "CSS"],
-    category: "Vanilla JS",
-    github: "https://github.com/Krishna-AGG18/rock-paper-scissors",
-    live: "https://rockpaperscissor-sait.netlify.app"
   },
   {
     title: "Tic Tac Toe",
     description: "A classic two-player Tic Tac Toe game featuring a responsive grid layout and win/draw detection logic.",
     tech: ["JavaScript", "HTML", "CSS"],
-    category: "Vanilla JS",
+    category: "Browser Games",
     github: "https://github.com/Krishna-AGG18/Tic-tac-toe",
     live: "https://tictactoe-sait.netlify.app"
-  },
-  {
-    title: "Spendence",
-    description: "A practical expense tracking utility to help users manage, log, and view their daily financial spending habits.",
-    tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
-    category: "Vanilla JS",
-    github: "https://github.com/Krishna-AGG18/Spendence",
-    live: "https://spendence.netlify.app"
-  },
-  {
-    title: "Today's Triumph",
-    description: "A straightforward to-do list application providing core functionality to add, mark as complete, and remove daily tasks.",
-    tech: ["JavaScript", "Bootstrap", "HTML", "CSS"],
-    category: "Vanilla JS",
-    github: "https://github.com/Krishna-AGG18/todolistweb",
-    live: "https://todaystriumph.netlify.app"
-  },
-  {
-    title: "Weave The Web",
-    description: "A conceptual e-commerce storefront showcasing product grid layouts and an interactive shopping cart design.",
-    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    category: "Vanilla JS",
-    github: "https://github.com/Krishna-AGG18/Weave-The-Web",
-    live: "https://weavetheweb.netlify.app"
   }
 ];
 
-const categories = ["All", "Full Stack", "React Practice", "Vanilla JS"];
+const categories = ["All", "Full Stack", "Frontend", "Browser Games"];
 
 export function Projects() {
   const [filter, setFilter] = useState("All");
