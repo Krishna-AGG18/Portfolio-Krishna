@@ -2,22 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlay, FaRedo } from "react-icons/fa";
+import { FaPlay, FaRedo, FaMousePointer } from "react-icons/fa";
+
+type GameState = "autoplay" | "playing" | "gameover";
 
 export function MiniGame() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [gameState, setGameState] = useState<GameState>("autoplay");
+  const gameStateRef = useRef<GameState>("autoplay");
   const [score, setScore] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
+  const [resetTrigger, setResetTrigger] = useState(0);
+
+  // Sync ref with state for the game loop to access latest state without restarting
+  useEffect(() => {
+    gameStateRef.current = gameState;
+  }, [gameState]);
 
   useEffect(() => {
-    if (!isPlaying || !canvasRef.current) return;
-
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Resize canvas to physical pixels to avoid blur
+    // Resize canvas
     const updateSize = () => {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width;
@@ -30,30 +37,42 @@ export function MiniGame() {
     let playerX = canvas.width / 2;
     const playerWidth = 30;
     const playerHeight = 20;
-    const bullets: { x: number; y: number }[] = [];
-    const enemies: { x: number; y: number; speed: number; size: number; hp: number }[] = [];
+    let bullets: { x: number; y: number }[] = [];
+    let enemies: { x: number; y: number; speed: number; size: number; hp: number }[] = [];
     
     let lastShootTime = 0;
-    let enemySpawnRate = 60; // frames
+    let enemySpawnRate = 60; 
     let frameCount = 0;
     let currentScore = 0;
-    let isGameOver = false;
+    let isDead = false;
 
-    // Mouse/Touch control
-    const handleMove = (e: MouseEvent | TouchEvent) => {
+    // User Interaction to take control
+    const handleInteraction = (e: MouseEvent | TouchEvent) => {
+      if (gameStateRef.current === "gameover") return;
+      
+      // If we are in autoplay, switch to playing mode
+      if (gameStateRef.current === "autoplay") {
+        setGameState("playing");
+      }
+      
       const rect = canvas.getBoundingClientRect();
       const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
       playerX = clientX - rect.left;
+      
       // Clamp player position
       if (playerX < playerWidth / 2) playerX = playerWidth / 2;
       if (playerX > canvas.width - playerWidth / 2) playerX = canvas.width - playerWidth / 2;
     };
 
-    window.addEventListener("mousemove", handleMove);
-    window.addEventListener("touchmove", handleMove, { passive: false });
+    // Attach listeners to the canvas wrapper so it only triggers when hovering the game
+    const canvasContainer = canvas.parentElement;
+    if (canvasContainer) {
+      canvasContainer.addEventListener("mousemove", handleInteraction);
+      canvasContainer.addEventListener("touchmove", handleInteraction, { passive: false });
+    }
 
     const drawShip = (x: number, y: number) => {
-      ctx.fillStyle = "#3b82f6"; // Blue ship
+      ctx.fillStyle = gameStateRef.current === "autoplay" ? "#a855f7" : "#3b82f6"; // Purple in AI mode, Blue when user controls
       ctx.beginPath();
       ctx.moveTo(x, y - playerHeight / 2);
       ctx.lineTo(x + playerWidth / 2, y + playerHeight / 2);
@@ -62,43 +81,73 @@ export function MiniGame() {
       ctx.fill();
     };
 
+    const resetGameVariables = () => {
+      playerX = canvas.width / 2;
+      bullets = [];
+      enemies = [];
+      currentScore = 0;
+      setScore(0);
+      enemySpawnRate = 60;
+      isDead = false;
+    };
+
     const loop = () => {
-      if (isGameOver) return;
+      // If dead and waiting for user to restart
+      if (isDead && gameStateRef.current === "gameover") {
+        animationFrameId = requestAnimationFrame(loop);
+        return;
+      }
 
-      // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Player y position (near bottom)
       const playerY = canvas.height - 30;
+
+      // Autoplay AI Logic
+      if (gameStateRef.current === "autoplay" && !isDead) {
+        if (enemies.length > 0) {
+          // Find the lowest enemy (closest to bottom)
+          let target = enemies[0];
+          for (let e of enemies) {
+            if (e.y > target.y) target = e;
+          }
+          // Move towards target smoothly
+          const speed = 4;
+          if (playerX < target.x - speed) playerX += speed;
+          else if (playerX > target.x + speed) playerX -= speed;
+          else playerX = target.x;
+          
+          // Keep in bounds
+          if (playerX < playerWidth / 2) playerX = playerWidth / 2;
+          if (playerX > canvas.width - playerWidth / 2) playerX = canvas.width - playerWidth / 2;
+        }
+      }
 
       // Auto shoot
       const now = Date.now();
-      if (now - lastShootTime > 250) {
+      if (now - lastShootTime > 250 && !isDead) {
         bullets.push({ x: playerX, y: playerY - playerHeight });
         lastShootTime = now;
       }
 
       // Update & Draw Bullets
-      ctx.fillStyle = "#8b5cf6"; // Purple bullets
+      ctx.fillStyle = "#8b5cf6"; 
       for (let i = bullets.length - 1; i >= 0; i--) {
         const b = bullets[i];
-        b.y -= 7; // Bullet speed
+        b.y -= 7; 
         ctx.fillRect(b.x - 2, b.y, 4, 10);
         if (b.y < 0) bullets.splice(i, 1);
       }
 
       // Spawn Enemies
       frameCount++;
-      if (frameCount % enemySpawnRate === 0) {
+      if (frameCount % enemySpawnRate === 0 && !isDead) {
         const size = Math.random() * 20 + 15;
         enemies.push({
           x: Math.random() * (canvas.width - size) + size / 2,
           y: -size,
-          speed: Math.random() * 1.5 + 1 + currentScore / 500, // Speed increases with score
+          speed: Math.random() * 1.5 + 1 + currentScore / 500, 
           size: size,
           hp: size > 25 ? 2 : 1,
         });
-        // Increase difficulty
         if (enemySpawnRate > 20) enemySpawnRate -= 1;
       }
 
@@ -107,27 +156,24 @@ export function MiniGame() {
         const e = enemies[i];
         e.y += e.speed;
 
-        // Draw asteroid (block)
-        ctx.fillStyle = e.hp > 1 ? "#ef4444" : "#f59e0b"; // Red if tough, orange if normal
+        ctx.fillStyle = e.hp > 1 ? "#ef4444" : "#f59e0b"; 
         ctx.fillRect(e.x - e.size / 2, e.y - e.size / 2, e.size, e.size);
 
         // Check collision with bottom
         if (e.y > canvas.height + e.size) {
-          isGameOver = true;
-          setGameOver(true);
-          setIsPlaying(false);
+          handleDeath();
           enemies.splice(i, 1);
           continue;
         }
 
         // Check collision with player
-        const dx = e.x - playerX;
-        const dy = e.y - playerY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < e.size / 2 + playerWidth / 2) {
-          isGameOver = true;
-          setGameOver(true);
-          setIsPlaying(false);
+        if (!isDead) {
+          const dx = e.x - playerX;
+          const dy = e.y - playerY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < e.size / 2 + playerWidth / 2) {
+            handleDeath();
+          }
         }
 
         // Check collision with bullets
@@ -151,10 +197,25 @@ export function MiniGame() {
         }
       }
 
-      // Draw Player
-      drawShip(playerX, playerY);
+      // Draw Player if not dead
+      if (!isDead) {
+        drawShip(playerX, playerY);
+      }
 
       animationFrameId = requestAnimationFrame(loop);
+    };
+
+    const handleDeath = () => {
+      isDead = true;
+      if (gameStateRef.current === "autoplay") {
+        // Silently restart after a brief moment in AI mode
+        setTimeout(() => {
+          resetGameVariables();
+        }, 1000);
+      } else {
+        // Show game over overlay for user
+        setGameState("gameover");
+      }
     };
 
     loop();
@@ -162,15 +223,23 @@ export function MiniGame() {
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", updateSize);
-      window.removeEventListener("mousemove", handleMove);
-      window.removeEventListener("touchmove", handleMove);
+      if (canvasContainer) {
+        canvasContainer.removeEventListener("mousemove", handleInteraction);
+        canvasContainer.removeEventListener("touchmove", handleInteraction);
+      }
     };
-  }, [isPlaying]);
+  }, [resetTrigger]); // Re-run effect when user triggers restart
 
-  const startGame = () => {
+  const handleRestart = () => {
+    setGameState("playing");
     setScore(0);
-    setGameOver(false);
-    setIsPlaying(true);
+    setResetTrigger((prev) => prev + 1);
+  };
+
+  const enableAutoplay = () => {
+    setGameState("autoplay");
+    setScore(0);
+    setResetTrigger((prev) => prev + 1);
   };
 
   return (
@@ -179,9 +248,14 @@ export function MiniGame() {
         <span className="text-muted-foreground font-semibold flex items-center gap-2">
           👾 Block Shooter
         </span>
-        <span className="text-foreground font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-          SCORE: {score}
-        </span>
+        <div className="flex items-center gap-4">
+          {gameState === "autoplay" && (
+             <span className="text-xs text-purple-500 font-bold animate-pulse hidden sm:block">AI AUTOPLAY</span>
+          )}
+          <span className="text-foreground font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+            SCORE: {score}
+          </span>
+        </div>
       </div>
       
       <div className="relative h-48 sm:h-56 w-full bg-background/50 overflow-hidden cursor-crosshair">
@@ -190,39 +264,46 @@ export function MiniGame() {
           className="absolute inset-0 w-full h-full block"
         />
 
+        {/* Floating instruction when in autoplay */}
         <AnimatePresence>
-          {!isPlaying && (
+          {gameState === "autoplay" && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-md px-4 py-2 rounded-full border border-border flex items-center gap-2 pointer-events-none"
+            >
+              <FaMousePointer className="text-blue-500 w-3 h-3" />
+              <span className="text-xs font-medium text-foreground">Hover to take control</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Game Over Screen */}
+        <AnimatePresence>
+          {gameState === "gameover" && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm z-10"
             >
-              {gameOver ? (
-                <>
-                  <div className="text-destructive font-bold text-xl mb-1">GAME OVER</div>
-                  <div className="text-muted-foreground text-sm mb-4">Final Score: {score}</div>
-                  <button
-                    onClick={startGame}
-                    className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium hover:bg-primary/90 transition-transform hover:scale-105 active:scale-95"
-                  >
-                    <FaRedo /> Try Again
-                  </button>
-                </>
-              ) : (
-                <>
-                  <div className="text-foreground font-bold text-lg mb-1">Defend the Portfolio!</div>
-                  <div className="text-muted-foreground text-xs mb-4 text-center px-4">
-                    Hover or touch the game area to move your ship. It fires automatically.
-                  </div>
-                  <button
-                    onClick={startGame}
-                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-transform hover:scale-105 active:scale-95 shadow-md shadow-blue-500/20"
-                  >
-                    <FaPlay /> Start Game
-                  </button>
-                </>
-              )}
+              <div className="text-destructive font-bold text-2xl mb-1">GAME OVER</div>
+              <div className="text-muted-foreground text-sm mb-6">Final Score: {score}</div>
+              <div className="flex gap-3">
+                <button
+                  onClick={handleRestart}
+                  className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium hover:bg-primary/90 transition-transform hover:scale-105 active:scale-95"
+                >
+                  <FaRedo /> Try Again
+                </button>
+                <button
+                  onClick={enableAutoplay}
+                  className="flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full font-medium hover:bg-secondary/80 transition-transform hover:scale-105 active:scale-95"
+                >
+                  <FaPlay /> Watch AI
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
