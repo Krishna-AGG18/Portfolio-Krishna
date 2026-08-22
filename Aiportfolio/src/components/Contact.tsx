@@ -1,137 +1,108 @@
 "use client";
 import { motion } from "framer-motion";
-import { Mail, Send } from "lucide-react";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { ArrowUpRight } from "lucide-react";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.6, 0.3],
-          y: [0, 20, 0]
-        }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" 
-      />
-
+    <section id="contact" className="py-32 relative bg-zinc-950 text-zinc-50 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
-          <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full mb-8" />
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Whether you have a question or just want to say hi, I'll try my best to get back to you!
-          </p>
-        </motion.div>
+        
+        {/* Massive Header */}
+        <div className="mb-16 md:mb-24 text-center md:text-left">
+          <h2 className="text-[16vw] md:text-[8vw] font-black leading-none tracking-tighter uppercase">
+            Let's <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.3)]">Talk.</span>
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
-            <p className="text-muted-foreground mb-8">
-              I'm currently looking for new opportunities. My inbox is always open.
-            </p>
-
-            <div className="flex flex-col gap-6">
-              <a href="mailto:kraggr2909@gmail.com" className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group">
-                <div className="p-4 rounded-full bg-secondary group-hover:bg-blue-500/10 transition-colors">
-                  <Mail className="w-6 h-6 group-hover:text-blue-500" />
-                </div>
+        <div className="grid md:grid-cols-12 gap-16 md:gap-8">
+          
+          {/* Left Column: Info */}
+          <div className="md:col-span-5 flex flex-col justify-between items-center md:items-start text-center md:text-left">
+            <div className="flex flex-col items-center md:items-start">
+              <p className="text-lg md:text-xl font-light text-zinc-400 mb-16 max-w-md">
+                I'm currently available for freelance work and full-time opportunities. If you're looking for a developer who cares about the details, drop me a line.
+              </p>
+              
+              <div className="space-y-12">
                 <div>
-                  <h4 className="font-medium text-foreground">Email</h4>
-                  <span>kraggr2909@gmail.com</span>
-                </div>
-              </a>
-
-              <div className="flex gap-4 pt-4">
-                {[
-                  { icon: FaGithub, href: "https://github.com/krishna-agg18" },
-                  { icon: FaLinkedin, href: "https://www.linkedin.com/in/krishnawd/" },
-                  { icon: FaTwitter, href: "https://x.com/Krishna2909782" },
-                  { icon: FaInstagram, href: "https://www.instagram.com/krishna_aggrwl/" },
-                ].map((social, i) => (
-                  <a
-                    key={i}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full bg-secondary text-muted-foreground hover:text-foreground hover:bg-foreground/10 transition-all hover:-translate-y-1"
-                  >
-                    <social.icon className="w-5 h-5" />
+                  <h4 className="text-xs font-mono tracking-widest text-zinc-600 uppercase mb-3">Email</h4>
+                  <a href="mailto:kraggr2909@gmail.com" className="text-xl md:text-2xl font-medium hover:text-cyan-400 transition-colors">
+                    kraggr2909@gmail.com
                   </a>
-                ))}
+                </div>
+                
+                <div>
+                  <h4 className="text-xs font-mono tracking-widest text-zinc-600 uppercase mb-4">Socials</h4>
+                  <div className="flex flex-col gap-3">
+                    <a href="https://github.com/krishna-agg18" target="_blank" rel="noreferrer" className="text-lg text-zinc-400 hover:text-white transition-colors w-max flex items-center gap-1 group">
+                      Github <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all" />
+                    </a>
+                    <a href="https://www.linkedin.com/in/krishnawd/" target="_blank" rel="noreferrer" className="text-lg text-zinc-400 hover:text-white transition-colors w-max flex items-center gap-1 group">
+                      LinkedIn <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all" />
+                    </a>
+                    <a href="https://x.com/Krishna2909782" target="_blank" rel="noreferrer" className="text-lg text-zinc-400 hover:text-white transition-colors w-max flex items-center gap-1 group">
+                      Twitter <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8 rounded-2xl glass bg-card/50"
-          >
-            <form action="https://formsubmit.co/kraggr2909@gmail.com" method="POST" className="space-y-6">
-              {/* Optional: Redirect back to the portfolio after submission */}
+          {/* Right Column: Form */}
+          <div className="md:col-span-7 md:pl-16">
+            <form action="https://formsubmit.co/kraggr2909@gmail.com" method="POST" className="flex flex-col gap-12">
               <input type="hidden" name="_next" value="http://localhost:3000/#contact" />
-              <input type="hidden" name="_subject" value="New Contact from Portfolio!" />
-              {/* Prevent captcha if preferred, though it reduces spam: <input type="hidden" name="_captcha" value="false" /> */}
+              <input type="hidden" name="_subject" value="New Inquiry from Portfolio" />
               
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
+              <div className="relative group">
                 <input
                   type="text"
-                  id="name"
                   name="name"
+                  id="name"
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                  placeholder="John Doe"
+                  placeholder="What's your name?"
+                  className="w-full bg-transparent border-b border-zinc-800 py-4 text-xl md:text-2xl font-light text-white placeholder-zinc-700 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
+
+              <div className="relative group">
                 <input
                   type="email"
-                  id="email"
                   name="email"
+                  id="email"
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all"
-                  placeholder="john@example.com"
+                  placeholder="Your email address?"
+                  className="w-full bg-transparent border-b border-zinc-800 py-4 text-xl md:text-2xl font-light text-white placeholder-zinc-700 focus:outline-none focus:border-white transition-colors"
                 />
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
+
+              <div className="relative group">
                 <textarea
-                  id="message"
                   name="message"
+                  id="message"
                   required
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"
-                  placeholder="Your message here..."
+                  rows={3}
+                  placeholder="Tell me about your project..."
+                  className="w-full bg-transparent border-b border-zinc-800 py-4 text-xl md:text-2xl font-light text-white placeholder-zinc-700 focus:outline-none focus:border-white transition-colors resize-none"
                 />
               </div>
+
               <button
                 type="submit"
-                className="w-full py-3 px-6 rounded-lg bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
+                className="self-start flex items-center gap-6 mt-4 text-lg font-medium group"
               >
-                Send Message
-                <Send className="w-4 h-4" />
+                <span className="relative overflow-hidden">
+                  <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">Send Message</span>
+                  <span className="inline-block absolute left-0 top-full transition-transform duration-300 group-hover:-translate-y-full text-cyan-400">Send Message</span>
+                </span>
+                <div className="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center group-hover:border-cyan-400 group-hover:bg-cyan-400 transition-all duration-300">
+                  <ArrowUpRight className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+                </div>
               </button>
             </form>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

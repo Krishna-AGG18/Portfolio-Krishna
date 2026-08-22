@@ -1,84 +1,111 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
-  const [progress, setProgress] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const wordIndexRef = useRef(0);
+  
+  const bgTextRef = useRef<HTMLDivElement>(null);
+  const smTextRef = useRef<HTMLDivElement>(null);
+
+  const words = ["LEARN", "BUILD", "IMPROVE"];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          return 100;
-        }
-        return prev + Math.floor(Math.random() * 15) + 5;
-      });
-    }, 150);
+    let startTime: number | null = null;
+    let animationFrame: number;
+    const duration = 1800; // 1.8 seconds loading animation
 
-    return () => clearInterval(timer);
-  }, []);
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      
+      // Calculate progress (0 to 100)
+      const rawProgress = Math.min((elapsed / duration) * 100, 100);
+      
+      // Add an ease-out curve so it starts fast and slows down
+      const easeOut = 1 - Math.pow(1 - rawProgress / 100, 3);
+      const currentProgress = Math.floor(easeOut * 100);
 
-  useEffect(() => {
-    if (progress >= 100) {
-      // Wait a tiny bit after hitting 100% before triggering complete
-      const timeout = setTimeout(() => {
-        onComplete();
-      }, 400); // 400ms delay so "Ready" is readable
-      return () => clearTimeout(timeout);
-    }
-  }, [progress, onComplete]);
+      // Directly mutate DOM to bypass React re-renders for extreme performance
+      if (bgTextRef.current) bgTextRef.current.textContent = currentProgress.toString();
+      if (smTextRef.current) smTextRef.current.textContent = currentProgress.toString() + "%";
+
+      // Only trigger a React re-render when the word actually needs to change (twice total)
+      if (currentProgress > 66 && wordIndexRef.current !== 2) {
+        wordIndexRef.current = 2;
+        setCurrentWordIndex(2);
+      } else if (currentProgress > 33 && currentProgress <= 66 && wordIndexRef.current !== 1) {
+        wordIndexRef.current = 1;
+        setCurrentWordIndex(1);
+      }
+
+      if (currentProgress < 100) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setTimeout(onComplete, 800);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [onComplete]);
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background text-foreground"
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-between bg-zinc-950 text-zinc-50 p-8 md:p-12 overflow-hidden"
+      initial={{ y: 0 }}
+      exit={{ y: "-100%" }}
+      transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
     >
-      <div className="relative flex flex-col items-center">
-        {/* Animated Background Glow */}
-        <div className="absolute -inset-10 bg-gradient-to-r from-blue-600 to-purple-600 opacity-20 blur-3xl rounded-full animate-pulse" />
+      <div className="w-full flex justify-between items-start font-mono text-xs md:text-sm text-zinc-400 uppercase tracking-widest relative z-20">
+        <span>Krishna Aggarwal</span>
+        <span>Portfolio &copy; {new Date().getFullYear()}</span>
+      </div>
 
-        {/* Logo/Name */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative z-10 text-4xl md:text-6xl font-bold tracking-tighter"
-        >
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-            K
-          </span>
-          <span className="text-foreground">RISHNA</span>
-        </motion.div>
-
-        {/* Progress Bar Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="mt-8 w-48 md:w-64 h-1.5 bg-muted rounded-full overflow-hidden relative z-10"
-        >
-          {/* Progress Bar Fill */}
+      <div className="flex-1 flex flex-col items-center justify-center relative w-full h-full">
+        <AnimatePresence mode="wait">
           <motion.div
-            className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-            initial={{ width: "0%" }}
-            animate={{ width: `${progress}%` }}
-            transition={{ ease: "linear", duration: 0.2 }}
-          />
-        </motion.div>
+            key={currentWordIndex}
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            className="absolute text-5xl md:text-[10vw] font-black tracking-tighter leading-none z-20"
+          >
+            {words[currentWordIndex]}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Progress Text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-3 text-sm text-muted-foreground font-mono relative z-10"
+        <div 
+          ref={bgTextRef}
+          className="absolute inset-0 flex items-center justify-center opacity-[0.03] font-bold text-[50vw] leading-none pointer-events-none z-0 tabular-nums tracking-tighter"
         >
-          {progress >= 100 ? "Ready" : `Loading... ${Math.min(progress, 100)}%`}
-        </motion.div>
+           0
+        </div>
+      </div>
+
+      <div className="w-full flex justify-between items-end font-mono text-lg md:text-3xl font-light relative z-20">
+        <div className="overflow-hidden">
+          <motion.div
+             initial={{ y: "100%" }}
+             animate={{ y: 0 }}
+             transition={{ delay: 0.2, duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          >
+            System Init
+          </motion.div>
+        </div>
+        <div className="overflow-hidden">
+          <motion.div
+             initial={{ y: "100%" }}
+             animate={{ y: 0 }}
+             transition={{ delay: 0.3, duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+             className="text-right"
+          >
+            <span ref={smTextRef} className="tabular-nums">0%</span>
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );

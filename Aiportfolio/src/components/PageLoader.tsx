@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LoadingScreen } from "./LoadingScreen";
+
+export const LoadingContext = createContext(true);
+export const useLoading = () => useContext(LoadingContext);
 
 export function PageLoader({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +32,9 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
         transition={{ duration: 0.8, ease: "easeInOut" }}
         style={{ pointerEvents: isLoading ? "none" : "auto" }}
       >
-        {children}
+        <LoadingContext.Provider value={isLoading}>
+          {children}
+        </LoadingContext.Provider>
       </motion.div>
     </>
   );
