@@ -156,7 +156,15 @@ export const FluidParticlesBackground = ({
 
     resizeCanvas(); // Initial resize
 
-    const particles: Particle[] = Array.from({ length: particleCount }, () => ({
+    // Dynamic particle count based on screen size (optimizes for ultrawide and mobile)
+    const getTargetParticleCount = () => {
+      const area = logicalWidth * logicalHeight;
+      const baseArea = 1920 * 1080;
+      const areaMultiplier = Math.min(Math.max(area / baseArea, 0.4), 2.5); 
+      return Math.floor(particleCount * areaMultiplier);
+    };
+
+    const particles: Particle[] = Array.from({ length: getTargetParticleCount() }, () => ({
       x: Math.random() * logicalWidth,
       y: Math.random() * logicalHeight,
       size:
@@ -280,6 +288,25 @@ export const FluidParticlesBackground = ({
 
     const handleResize = () => {
       resizeCanvas();
+      const newTarget = getTargetParticleCount();
+      
+      // If window gets larger, add new particles to maintain density
+      if (newTarget > particles.length) {
+        for (let i = particles.length; i < newTarget; i++) {
+          particles.push({
+            x: Math.random() * logicalWidth,
+            y: Math.random() * logicalHeight,
+            size: Math.random() * (particleSize.max - particleSize.min) + particleSize.min,
+            velocity: { x: 0, y: 0 },
+            life: Math.random() * 100,
+            maxLife: 100 + Math.random() * 50,
+          });
+        }
+      } 
+      // If window gets smaller, remove excess particles to save performance
+      else if (newTarget < particles.length) {
+        particles.splice(newTarget);
+      }
     };
 
     const handleVisibilityChange = () => {

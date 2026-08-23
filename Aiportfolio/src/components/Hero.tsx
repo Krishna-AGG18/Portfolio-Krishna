@@ -121,7 +121,7 @@ export function Hero() {
       {/* Atmospheric Background Noise */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')" }}></div>
 
-      <div className="max-w-[90vw] mx-auto relative z-10 w-full h-full flex items-center">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full h-full flex items-center">
         <div className="flex flex-col items-center md:items-start text-center md:text-left justify-center space-y-4 w-full relative z-10 mix-blend-difference pointer-events-none">
           
           <div className="overflow-hidden pointer-events-auto">
@@ -187,9 +187,9 @@ export function Hero() {
 
         </div>
 
-        {/* Massive Cutout Hero Image (Absolute on Right) */}
-        <div className="hidden md:block absolute bottom-0 right-0 lg:right-[5%] h-[75vh] z-0 pointer-events-none">
-          <div ref={imgWrapperRef} className="h-full relative flex items-end translate-y-[150px] opacity-0">
+        {/* Massive Cutout Hero Image (Absolute on Right of the 7xl Container) */}
+        <div className="hidden md:block absolute bottom-0 right-0 md:-right-10 lg:-right-20 h-[70vh] max-h-[60dvh] lg:max-h-[65dvh] max-w-[50vw] lg:max-w-[45vw] z-0 pointer-events-none">
+          <div ref={imgWrapperRef} className="h-full w-full relative flex items-end justify-end translate-y-[150px] opacity-0">
             <img 
               ref={imgRef}
               src="/krishna-pic.png" 
