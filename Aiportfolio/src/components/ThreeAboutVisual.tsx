@@ -19,16 +19,18 @@ const vertexShader = `
     vColor = color;
     
     // Start scattered, assemble based on uProgress
-    vec3 scattered = position + aRandom * 3.0; // Scatter spread
+    vec3 scattered = position + aRandom * 3.0;
     
     // Use an ease-out calculation for progress to make it snap nicely
     float p = smoothstep(0.0, 1.0, uProgress);
     vec3 currentPos = mix(scattered, position, p);
     
-    // Mouse repulsion (magnetic effect)
+    // Professional depth interaction (no more blowing a hole in the face)
     float dist = distance(currentPos.xy, uMouse.xy);
-    float force = smoothstep(1.5, 0.0, dist); // Radius of 1.5 units
-    currentPos += normalize(currentPos - vec3(uMouse.xy, 0.0)) * force * 0.4;
+    float force = smoothstep(2.5, 0.0, dist);
+    
+    // Create a gentle fluid ripple moving outward from the mouse in Z-space only
+    currentPos.z += sin(dist * 4.0 - uTime * 3.0) * force * 0.15 * p;
 
     // Slight floating noise when assembled
     currentPos.z += sin(uTime * 1.5 + position.x * 5.0) * 0.04 * p;
@@ -36,7 +38,7 @@ const vertexShader = `
 
     vec4 mvPosition = modelViewMatrix * vec4(currentPos, 1.0);
     
-    // Fixed Size attenuation so particles are actually visible (was way too small before)
+    // Fixed Size attenuation so particles are actually visible
     gl_PointSize = (20.0 / -mvPosition.z); 
     gl_Position = projectionMatrix * mvPosition;
   }
@@ -100,7 +102,6 @@ function ParticlePortrait({ url }: { url: string }) {
           // Only create a particle if the pixel is visible (not transparent)
           if (a > 50) {
             // Map x and y to 3D space, centering it
-            // Adjust the multiplier to scale the overall size of the portrait
             const widthScale = 4.8;
             const pX = (x / canvas.width - 0.5) * widthScale; 
             const pY = -(y / canvas.height - 0.5) * (widthScale * (canvas.height / canvas.width));
@@ -163,11 +164,18 @@ function ParticlePortrait({ url }: { url: string }) {
       const y = (state.pointer.y * viewport.height) / 2;
       
       // Prevent the ugly black hole in the center on initial load
-      // React Three Fiber defaults pointer to (0,0) before the first mouse move.
       if (state.pointer.x !== 0 || state.pointer.y !== 0) {
-        // Smoothly interpolate mouse position for the repulsion effect
+        // Smoothly interpolate mouse position for the ripple effect
         materialRef.current.uniforms.uMouse.value.x += (x - materialRef.current.uniforms.uMouse.value.x) * 0.1;
         materialRef.current.uniforms.uMouse.value.y += (y - materialRef.current.uniforms.uMouse.value.y) * 0.1;
+
+        // Apply a subtle 3D parallax tilt to the entire portrait based on mouse position
+        if (pointsRef.current) {
+          const targetRotX = (state.pointer.y) * 0.15;
+          const targetRotY = (state.pointer.x) * 0.15;
+          pointsRef.current.rotation.x += (targetRotX - pointsRef.current.rotation.x) * 0.05;
+          pointsRef.current.rotation.y += (targetRotY - pointsRef.current.rotation.y) * 0.05;
+        }
       }
     }
   });
