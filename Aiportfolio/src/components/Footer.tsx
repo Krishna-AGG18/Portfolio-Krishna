@@ -22,6 +22,10 @@ export function Footer() {
               <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase">
                 © {new Date().getFullYear()} KRISHNA STUDIO · DESIGNED IN INDIA
               </p>
+              <a href="/game.html" target="_blank" rel="noopener noreferrer" className="mt-2 px-3 py-1.5 border border-zinc-800 hover:border-cyan-500 text-zinc-400 hover:text-cyan-400 text-xs font-mono tracking-widest uppercase transition-all duration-300 flex items-center gap-2 rounded bg-black/50 hover:bg-cyan-950/30 group">
+                <span className="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-cyan-500 group-hover:animate-pulse transition-colors"></span>
+                Initialize Batcomputer
+              </a>
             </div>
             
             <div className="flex items-center gap-6">
