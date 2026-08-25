@@ -106,7 +106,7 @@ export function MiniGame() {
         if (enemies.length > 0) {
           // Find the lowest enemy (closest to bottom)
           let target = enemies[0];
-          for (let e of enemies) {
+          for (const e of enemies) {
             if (e.y > target.y) target = e;
           }
           // Move towards target smoothly

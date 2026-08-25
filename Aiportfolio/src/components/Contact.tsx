@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+
 import { ArrowUpRight } from "lucide-react";
 
 export function Contact() {
@@ -10,7 +10,7 @@ export function Contact() {
         {/* Massive Header */}
         <div className="mb-16 md:mb-24 text-center md:text-left">
           <h2 className="text-[16vw] md:text-[8vw] font-black leading-none tracking-tighter uppercase">
-            Let's <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.3)]">Talk.</span>
+            Let&apos;s <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.3)]">Talk.</span>
           </h2>
         </div>
 
@@ -20,7 +20,7 @@ export function Contact() {
           <div className="md:col-span-5 flex flex-col justify-between items-center md:items-start text-center md:text-left">
             <div className="flex flex-col items-center md:items-start">
               <p className="text-lg md:text-xl font-light text-zinc-400 mb-16 max-w-md">
-                I'm currently available for freelance work and full-time opportunities. If you're looking for a developer who cares about the details, drop me a line.
+                I&apos;m currently available for freelance work and full-time opportunities. If you&apos;re looking for a developer who cares about the details, drop me a line.
               </p>
               
               <div className="space-y-12">

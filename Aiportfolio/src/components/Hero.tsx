@@ -21,7 +21,7 @@ export function Hero() {
 
   useEffect(() => {
     // We will set up quickTo for parallax after the component mounts
-    let ctx = gsap.context(() => {});
+    const ctx = gsap.context(() => {});
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });

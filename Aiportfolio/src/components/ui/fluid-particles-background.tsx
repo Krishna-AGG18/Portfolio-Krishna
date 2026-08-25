@@ -213,15 +213,15 @@ export const FluidParticlesBackground = ({
       
       // Stage 1: White to Red (Hero to About)
       // Clamps between 0 and 1 as we scroll the first viewport height
-      let p1 = Math.max(0, Math.min(scrollY / (vh * 0.8), 1.0));
+      const p1 = Math.max(0, Math.min(scrollY / (vh * 0.8), 1.0));
       
       // Stage 2: Red to Gold (About to Skills/Projects)
       // About is tall, so we start shifting to Gold after scrolling 1.8x viewport heights
-      let p2 = Math.max(0, Math.min((scrollY - (vh * 1.8)) / vh, 1.0));
+      const p2 = Math.max(0, Math.min((scrollY - (vh * 1.8)) / vh, 1.0));
 
       // Stage 3: Gold to Cyan (Projects to Experience/Contact)
       // Start shifting to Cyan after 3.2x viewport heights
-      let p3 = Math.max(0, Math.min((scrollY - (vh * 3.5)) / vh, 1.0));
+      const p3 = Math.max(0, Math.min((scrollY - (vh * 3.5)) / vh, 1.0));
       
       if (p3 > 0) {
         // Interpolate Gold (250, 204, 21) to Cyan (6, 182, 212)
