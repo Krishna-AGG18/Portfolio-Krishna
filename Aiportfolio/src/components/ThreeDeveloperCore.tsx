@@ -35,6 +35,7 @@ interface CoreProps {
 function CentralCore({ activeNode }: { activeNode: NodeId | null }) {
   const outerRef = useRef<THREE.Mesh>(null);
   const innerRef = useRef<THREE.Mesh>(null);
+  const timeRef = useRef(0);
 
   const activeColor = useMemo(() => {
     if (!activeNode) return new THREE.Color("#06b6d4"); // Default cyan
@@ -55,7 +56,8 @@ function CentralCore({ activeNode }: { activeNode: NodeId | null }) {
       outerRef.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.05);
       
       // Idle breathing
-      const breathe = Math.sin(state.clock.elapsedTime * 2) * 0.02;
+      timeRef.current += delta;
+      const breathe = Math.sin(timeRef.current * 2) * 0.02;
       innerRef.current.scale.setScalar(0.8 + breathe);
       
       // Dynamic color shift
