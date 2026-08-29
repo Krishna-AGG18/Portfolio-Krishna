@@ -1,10 +1,12 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState, useEffect, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { Code2, Compass, Database, Layers3, Sparkles } from "lucide-react";
+import { DeveloperCommandCenter } from "./DeveloperCommandCenter";
 
 const ThreeAboutVisual = dynamic(
   () => import("./ThreeAboutVisual").then((module) => module.ThreeAboutVisual),
@@ -12,6 +14,8 @@ const ThreeAboutVisual = dynamic(
 );
 
 gsap.registerPlugin(ScrollTrigger);
+
+
 
 export function About() {
   const cacheBuster = "1";
@@ -124,27 +128,7 @@ export function About() {
           </div>
         </div>
 
-        <div className="about-card mt-6 overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] p-8 backdrop-blur-md transition-colors duration-500 hover:bg-white/[0.04] hover:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-          <div className="mb-10 flex items-center justify-between gap-4">
-            <h3 className="text-xl font-semibold tracking-tight">GitHub contributions</h3>
-            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-400">activity.log</span>
-          </div>
-          <div className="flex flex-col items-center gap-12">
-            <img 
-              src={`https://streak-stats.demolab.com/?user=Krishna-AGG18&theme=transparent&hide_border=true&title_color=ef4444&text_color=a1a1aa&icon_color=ef4444&background=transparent&ring=ef4444&fire=ef4444&currStreakNum=fafafa&sideNums=fafafa&currStreakLabel=a1a1aa&sideLabels=a1a1aa&dates=71717a&v=${cacheBuster}`} 
-              alt="Krishna Aggarwal's GitHub Stats" 
-              className="max-w-full drop-shadow-xl" 
-              loading="lazy" 
-            />
-            <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <img 
-              src={`https://github-readme-activity-graph.vercel.app/graph?username=Krishna-AGG18&theme=react-dark&bg_color=transparent&hide_border=true&color=ef4444&line=ef4444&point=fafafa&v=${cacheBuster}`} 
-              alt="Krishna Aggarwal's GitHub Activity Graph" 
-              className="w-full max-w-4xl drop-shadow-xl opacity-90 transition-opacity hover:opacity-100" 
-              loading="lazy" 
-            />
-          </div>
-        </div>
+        <DeveloperCommandCenter />
       </div>
     </section>
   );
