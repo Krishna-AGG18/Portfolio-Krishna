@@ -10,9 +10,16 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 w-full flex flex-col items-center gap-16 mt-8">
           
           {/* Giant Outlined Text */}
-          <div className="w-full flex justify-center relative cursor-default select-none group">
-            <h1 className="text-[18vw] font-black leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.15)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.15)] transition-all duration-700 group-hover:[-webkit-text-stroke:2px_rgba(6,182,212,0.8)] group-hover:drop-shadow-[0_0_40px_rgba(6,182,212,0.4)]">
-              KRISHNA
+          <div className="w-full flex justify-center relative cursor-default select-none">
+            <h1 className="flex text-[18vw] font-black leading-none tracking-tighter">
+              {"KRISHNA".split("").map((char, index) => (
+                <span 
+                  key={index} 
+                  className="px-[0.2em] -mx-[0.2em] bg-[linear-gradient(to_right,#06b6d4_45%,rgba(6,182,212,0.7)_48%,rgba(6,182,212,0.3)_52%,transparent_55%)] bg-[length:400%_100%] bg-right bg-clip-text text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.15)] md:[-webkit-text-stroke:2px_rgba(255,255,255,0.15)] transition-all duration-700 ease-out hover:bg-left hover:[-webkit-text-stroke:2px_rgba(6,182,212,0.8)] hover:drop-shadow-[0_0_40px_rgba(6,182,212,0.6)]"
+                >
+                  {char}
+                </span>
+              ))}
             </h1>
           </div>
 
